@@ -1,0 +1,377 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="platform-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="app-container">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+      <a href="single-project/{{app}}" class="bottomCentered">
+        <paper-button raised class="myButtons" style="{{button}}">MORE</paper-button>
+      </a>
+      <h2>{{title}}</h2>
+      <div class="IconRole">
+        <iron-image lass = "Icon" style="width:100px; height:100px; background-color: lightgray;" preload src="../images/{{icon}}"></iron-image>
+        <div class="Role">
+          <h3>My Role</h3>
+          <p>{{role}}</p>
+        </div>
+      </div>
+      <div class="PlatformIcons">
+        <a href="https://itunes.apple.com/us/app/{{apple-link}}" class="IndividualPlatformIcon">
+          <paper-icon-button raised class="iconButtons" icon="platform-icons:apple"></paper-icon-button>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id={{google-link}}" class="IndividualPlatformIcon">
+          <paper-icon-button raised class="iconButtons" icon="platform-icons:android"></paper-icon-button>
+        </a>
+        <a href="https://www.amazon.com/{{amazon-link}}" class="IndividualPlatformIcon">
+          <paper-icon-button raised class="iconButtons" icon="platform-icons:amazon"></paper-icon-button>
+        </a>
+        <a href="https://apps.facebook.com/{{facebook-link}}" class="IndividualPlatformIcon">
+          <paper-icon-button raised class="iconButtons" icon="platform-icons:facebook"></paper-icon-button>
+        </a>
+      </div>
+      <p class="left">{{short-information}}</p>
+  </template>
+
+  <script>
+    class AppContainer extends Polymer.Element {
+      static get is() { return 'app-container'; }
+      connectedCallback() {
+        super.connectedCallback();
+      }
+      renderPart(item, index){
+        switch(item["type"]){
+          default:
+          break;
+        }
+      }
+      setApp(){
+        var config =
+          {
+            "cometsWake":{
+              "title":"Comets Wake: FPS Co-op",
+              "icon":"",
+              "role":"sole developer, sole designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "testingVR":{
+              "title":"Testing VR Interactions",
+              "icon":"vcook.png",
+              "role":"sole developer, sole designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "314G":{
+              "title":"314G: Modelling New Home",
+              "icon":"314g.png",
+              "role":"sole developer, sole designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+
+
+
+
+
+
+            "marketing":{
+              "title":"Marketing",
+              "icon":"viva.png",
+              "role":"sole marketer",
+              "apple-link":"viva-slots-las-vegas-classic-casino-games/id1017064541?mt=8&ign-mpt=uo%3D4",
+              "google-link":"com.RocketGames.ClassicSlots",
+              "amazon-link":"B011WDWQ6O",
+              "facebook-link":"vivaslots",
+              "information":{},
+              "short-information":"For these apps I wasn’t directly involved with the development.  I instead was the sole full time marketer on them from their launch to about 4 months into their lifespans.  During that time these apps grew to be the primary revenue stream, and the business grew by nearly 10x in revenue.  I grew them using both marketing and cross promotion from other apps.  I ran campaigns in Chartboost, Facebook, and Amazon."
+            },
+            "bigbonus":{
+              "title":"Big Bonus",
+              "icon":"bigbonus.png",
+              "role":"sole product manager, designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "quest":{
+              "title":"Vegas Roadtrip",
+              "icon":"quest.png",
+              "role":"sole product manager, sole designer, app launch and promotion",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "tournaments":{
+              "title":"Tournaments",
+              "icon":"viva.png",
+              "role":"sole product manager, sole designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":"The tournaments UI on the left of the machine displays limited information.  The original design had more information but was too distracting and confusing.  We designed a system that would allow for real player data to be stored in parse, and for a tournament player to use that stored player data for a simulated real time tournament.  This allowed for playing against real players without the overhead of having a synchronous server backend.  This increased engagement and the competitive component increased conversion in high spending players.  Results determined with A/B on/off experiment."
+            },
+            "cowgirl":{
+              "title":"Machine Progression",
+              "icon":"cowgirl.png",
+              "role":"sole product manager, sole designer, app launch and promotion",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "oz":{
+              "title":"Bursting Wilds",
+              "icon":"oz.png",
+              "role":"sole product manager, sole designer, app launch and promotion",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "gameshow":{
+              "title":"Maxed out Features",
+              "icon":"gameshow.png",
+              "role":"sole product manager, sole designer, app launch and promotion",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "rio":{
+              "title":"Simplified App",
+              "icon":"rio.png",
+              "role":"sole developer, sole designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "war":{
+              "title":"Blue Leaning App",
+              "icon":"war.png",
+              "role":"designer, app launch and promotion",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "email":{
+              "title":"Email Campaigns",
+              "icon":"viva.png",
+              "role":"sole developer, sole designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "crossPromo":{
+              "title":"Intra-network Promotion",
+              "icon":"crossPromo.png",
+              "role":"designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "ooc":{
+              "title":"Out of Credits Dialog",
+              "icon":"ooc.png",
+              "role":"designer",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            }
+
+            ,
+            "fishCook":{
+              "title":"Fish Cook: Kickstarter",
+              "icon":"fishcook.jpg",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "jovios":{
+              "title":"Jovios: Multi-Device Console",
+              "icon":"jovios.png",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "bot-a-boom":{
+              "title":"Bot-a-Boom",
+              "icon":"bots.png",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "snakes":{
+              "title":"Snakes",
+              "icon":"snakes.png",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "bowling":{
+              "title":"Bowling",
+              "icon":"",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "cloudburst":{
+              "title":"Cloudburst: Test App",
+              "icon":"cloudburst.png",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            }
+
+            ,
+            "frontierville":{
+              "title":"Frontierville: The Jail",
+              "icon":"",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "specTemplate":{
+              "title":"Spec Template",
+              "icon":"",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            },
+            "semiautomatedreporting":{
+              "title":"Semi-Automated Reporting",
+              "icon":"",
+              "role":"",
+              "apple-link":"",
+              "google-link":"",
+              "amazon-link":"",
+              "facebook-link":"",
+              "information":{},
+              "short-information":""
+            }
+          }
+        var app = "";
+        if (window.location.href.split("single-project/").length > 1){
+          app = window.location.href.split("single-project/")[1];
+          this.set("button","display:none;");
+          config[app]["information"].forEach(renderPart);
+        }
+        else{
+          app = this.app;
+          this.set("button","");
+          this.set("short-information", config[app]["short-information"]);
+        }
+        this.set("title", config[app]["title"]);
+        this.set("icon", config[app]["icon"]);
+        this.set("role", config[app]["role"]);
+        this.set("apple-link", config[app]["apple-link"]);
+        this.set("google-link", config[app]["google-link"]);
+        this.set("amazon-link", config[app]["amazon-link"]);
+        this.set("facebook-link", config[app]["facebook-link"]);
+      }
+      ready() {
+        super.ready();
+        this.setApp();
+      }
+      static get properties() {
+        return {
+          app: String
+        }
+      }
+    }
+    window.customElements.define(AppContainer.is, AppContainer);
+  </script>
+</dom-module>

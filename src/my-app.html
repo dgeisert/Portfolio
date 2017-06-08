@@ -25,6 +25,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="my-view1.html">
 <link rel="lazy-import" href="my-view2.html">
 <link rel="lazy-import" href="my-view3.html">
+<link rel="lazy-import" href="my-view4.html">
+<link rel="lazy-import" href="my-view5.html">
+<link rel="lazy-import" href="my-single-project.html">
 <link rel="lazy-import" href="my-view404.html">
 
 <dom-module id="my-app">
@@ -60,11 +63,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-decoration: none;
         color: var(--app-secondary-color);
         line-height: 40px;
+        margin-left: 15px;
+        margin-top: -15px;
       }
 
       .drawer-list a.iron-selected {
         color: black;
         font-weight: bold;
+      }
+      a.SidebarHeader{
+        font-size: 24px;
+        margin: 0;
+        padding: 0;
+        margin-left: 5px;
       }
     </style>
 
@@ -80,9 +91,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer" slot="drawer">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="view1">View One</a>
-          <a name="view2" href="view2">View Two</a>
-          <a name="view3" href="view3">View Three</a>
+          <a name="view1" href="view1" class="SidebarHeader">About Me</a>
+          <a name="view2" href="view2" class="SidebarHeader">VR Side Projects</a>
+          <a name="single-project/cometsWake" href="single-project/cometsWake">Comets Wake: FPS Co-op</a>
+          <a name="single-project/testingVR" href="single-project/testingVR">Comets Wake: FPS Co-op</a>
+          <a name="single-project/314G" href="single-project/314G">Comets Wake: FPS Co-op</a>
+          <a name="view3" href="view3" class="SidebarHeader">Rocket Games</a>
+          <a name="single-project/rio" href="single-project/rio">Comets Wake: FPS Co-op</a>
+          <a name="single-project/email" href="single-project/email">Comets Wake: FPS Co-op</a>
+          <a name="single-project/tournaments" href="single-project/tournaments">Comets Wake: FPS Co-op</a>
+          <a name="single-project/quest" href="single-project/quest">Comets Wake: FPS Co-op</a>
+          <a name="single-project/crossPromo" href="single-project/crossPromo">Comets Wake: FPS Co-op</a>
+          <a name="single-project/marketing" href="single-project/marketing">Comets Wake: FPS Co-op</a>
+          <a name="view4" href="view4" class="SidebarHeader">Cat Duo</a>
+          <a name="single-project/fishCook" href="single-project/fishCook">Comets Wake: FPS Co-op</a>
+          <a name="single-project/jovios" href="single-project/jovios">Comets Wake: FPS Co-op</a>
+          <a name="single-project/bot-a-boom" href="single-project/bot-a-boom">Comets Wake: FPS Co-op</a>
+          <a name="single-project/bowling" href="single-project/bowling">Comets Wake: FPS Co-op</a>
+          <a name="single-project/snakes" href="single-project/snakes">Comets Wake: FPS Co-op</a>
+          <a name="single-project/cloudburst" href="single-project/cloudburst">Comets Wake: FPS Co-op</a>
+          <a name="view5" href="view5" class="SidebarHeader">Zynga</a>
+          <a name="single-project/frontierville" href="single-project/frontierville">Comets Wake: FPS Co-op</a>
+          <a name="single-project/specTemplate" href="single-project/specTemplate">Comets Wake: FPS Co-op</a>
+          <a name="single-project/semiautomatedreporting" href="single-project/semiautomatedreporting">Comets Wake: FPS Co-op</a>
         </iron-selector>
       </app-drawer>
 
@@ -92,7 +123,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
+            <div main-title>David Geisert Portfolio</div>
           </app-toolbar>
         </app-header>
 
@@ -104,6 +135,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
+          <my-view4 name="view4"></my-view4>
+          <my-view5 name="view5"></my-view5>
+          <my-single-project name="single-project"></my-single-project>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
