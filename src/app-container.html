@@ -14,6 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="../bower_components/responsive-embed/responsive-embed.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="app-container">
@@ -30,27 +31,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </a>
       <h2>{{title}}</h2>
       <div class="IconRole">
-        <iron-image lass = "Icon" style="width:100px; height:100px; background-color: lightgray;" preload src="../images/{{icon}}"></iron-image>
+        <iron-image class = "Icon" style="width:100px; height:100px; background-color: lightgray;" preload src="../images/{{icon}}"></iron-image>
         <div class="Role">
           <h3>My Role</h3>
           <p>{{role}}</p>
         </div>
       </div>
       <div class="PlatformIcons">
-        <a href="https://itunes.apple.com/us/app/{{apple-link}}" class="IndividualPlatformIcon">
+        <a href="https://itunes.apple.com/us/app/{{apple-link}}" class="IndividualPlatformIcon" id="apple">
           <paper-icon-button raised class="iconButtons" icon="platform-icons:apple"></paper-icon-button>
         </a>
-        <a href="https://play.google.com/store/apps/details?id={{google-link}}" class="IndividualPlatformIcon">
+        <a href="https://play.google.com/store/apps/details?id={{google-link}}" class="IndividualPlatformIcon" id="google">
           <paper-icon-button raised class="iconButtons" icon="platform-icons:android"></paper-icon-button>
         </a>
-        <a href="https://www.amazon.com/{{amazon-link}}" class="IndividualPlatformIcon">
+        <a href="https://www.amazon.com/{{amazon-link}}" class="IndividualPlatformIcon" id="amazon">
           <paper-icon-button raised class="iconButtons" icon="platform-icons:amazon"></paper-icon-button>
         </a>
-        <a href="https://apps.facebook.com/{{facebook-link}}" class="IndividualPlatformIcon">
+        <a href="https://apps.facebook.com/{{facebook-link}}" class="IndividualPlatformIcon" id="facebook">
           <paper-icon-button raised class="iconButtons" icon="platform-icons:facebook"></paper-icon-button>
         </a>
       </div>
-      <p class="left">{{short-information}}</p>
+      <p id="information" class="left">{{short-information}}</p>
   </template>
 
   <script>
@@ -59,9 +60,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       connectedCallback() {
         super.connectedCallback();
       }
-      renderPart(item, index){
+      renderPart(item){
         switch(item["type"]){
+          case "text":
+          return "<p>" + item["content"] + "</p>";
+          break;
+          case "h2":
+          return "<h2>" + item["content"] + "</h2>";
+          break;
+          case "image":
+          return "<iron-image sizing=\"contain\" style=\"width:100%; height: 200px; background-color: #fff;\" preload src=\"../images/" + item["content"] + "\"></iron-image>";
+          break;
+          case "video":
+          return "<iframe style=\"width: 100%; height: 315px; flex: 1; background-color: #fff;\" width=\"560\" height=\"315\" src=\"" + item["content"] + "\" frameborder=\"0\" allowfullscreen></iframe>";
+          break;
           default:
+          return "";
           break;
         }
       }
@@ -70,14 +84,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           {
             "cometsWake":{
               "title":"Comets Wake: FPS Co-op",
-              "icon":"",
+              "icon":"comet.png",
               "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"Understand the VR landscape around usage, session length, and willingness to pay.  While the number of devices shipped in 2016 is available, information on the activity on the platforms is not published."},{"type":"h2","content":"Design Process"},{"type":"text","content":"This is the first VR app I am intending to release.  The design space is moderately well known at this point for FPS shooters.  The co-op aspect has been done before, and I am borrowing a lot of the design from games like Arizona Sunshine, Rec Room, Robo Recall, and Superhot.  The teleportation movement paradigm in VR is the one I'm going with, as opposed to the scene style of Superhot, or the hold to move forward style that causes motion sickness."},{"type":"image","content":"teleport.gif"},{"type":"text","content":"I'm also borrowing the holstering system of Robo Recall.  This allows for a natural feel of pulling out weapons.  The surprise and delight from having infinite numbers of weapons is surprisingly high compared to if it was just infinite ammo like in Rec Room."},{"type":"image","content":"enemy.gif"},{"type":"text","content":"The other aspects of design that I've learned from the ville genere and the social casino genre will be included as meta systems, such as skinner boxes, secondary currencies, time locks, and crafting."}],
+              "short-information":"Comets Wake is a first person shooter, with multiplayer support.  It is currently in development."
             },
             "testingVR":{
               "title":"Testing VR Interactions",
@@ -87,8 +101,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"Understand the best interactions in VR"},{"type":"h2","content":"Design Process"},{"type":"text","content":"Over the process of a year I experimented with different design paradigms.  These included movement, UI interaction, and world interaction.  I set out with a certain set of assumptions and played multiple types of VR headsets, and apps, to find the types of interactions that worked for me.  Then I tested those interactions on friends and family to get feedback.  I did this in waves so that I could get one round of feedback from people, get their updated response, then use that update on a new set of people.  This led to a gaze to teleport and interact on the Gear and a point/grab to teleport and interact on the Vive/Rift."},{"type":"image","content":"earlyTeleport.gif"},{"type":"text","content":"The interaction scheme felt good as long as the user was told what interaction they would be performing when tapping.  below is the interaction for woodchopping on the gear, which shows an axe in the hand as long as the focus is on the tree."},{"type":"image","content":"worldInteract.gif"},{"type":"text","content":"Early on in the process I built a set of simualted controls for my dev environment.  These allowed for much faster testing and debugging when getting the interactions right for myself."}],
+              "short-information":"Multiple iterations of VR interactions were tested with family and friends, to determine the best experience."
             },
             "314G":{
               "title":"314G: Modelling New Home",
@@ -98,8 +112,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"To allow for optimal placing of furniture, despite not being allowed in the house."},{"type":"h2","content":"Design Process"},{"type":"text","content":"After the initial purchase of our house, we wanted to figure out where our furniture would best go for when we moved it, to make the move easier when it happened.  It wasn't possible for us to go into the house and measure and get a feel of things, as we hadn't closed.  We did, however, have a blueprint, and google maps satalite images of the house.  I reconstucted the current layout in VR."},{"type":"image","content":"314Gb.png"},{"type":"text","content":"Using pictures of the house from Redfin, we placed the build in appliances, counters, and fireplace.  We also corrected some of the window and door placements from the blueprints using the pictures.  After doing rough models of our furniture, we were able to create multiple layouts and move through them using the Gear headset."},{"type":"image","content":"314Ga.png"},{"type":"text","content":"This gave us a good understanding of the flow of the space and was instrumental in the final layout."}],
+              "short-information":"Before able to move into a new house, we placed furniture in a virtual layout to find the layout that best suited us."
             },
 
 
@@ -115,239 +129,242 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               "google-link":"com.RocketGames.ClassicSlots",
               "amazon-link":"B011WDWQ6O",
               "facebook-link":"vivaslots",
-              "information":{},
-              "short-information":"For these apps I wasn’t directly involved with the development.  I instead was the sole full time marketer on them from their launch to about 4 months into their lifespans.  During that time these apps grew to be the primary revenue stream, and the business grew by nearly 10x in revenue.  I grew them using both marketing and cross promotion from other apps.  I ran campaigns in Chartboost, Facebook, and Amazon."
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"To grow multiple apps profitably at the same time, with minimal costs."},{"type":"h2","content":"Design Process"},{"type":"text","content":"The apps I marketed were Viva Slots Vegas, Triple Double Casino, Vegas Jackpot, Popeye Slots, Silver City Slots, Downtown Deluxe Slots, and Multi Reel Slots.  For these apps I wasn’t directly involved with the development.  I instead was the sole full time marketer on them from their launch to about 4 months into their lifespans.  During that time these apps grew to be the primary revenue stream, and the business grew by nearly 10x in revenue.  I grew them using both marketing and cross promotion from other apps.  I ran campaigns in Chartboost, Facebook, and Amazon."},{"type":"text","content":"Managing all these apps at once across multiple devices and multiple advertising platforms required an automated reporting system and semi-automated recommendation structure.  The reporting was driven by relating each app LTV to the CPI of the platform and campaign that was being run.  These were then compared with a level of variance we had seen from the given advertising partner over time to determine if the campaing should be turned off, decreased, or increased.  We developed rules of these changes, based on internet protocols of linear increase, exponential decrease.  While those rules created sawtooth patterns for any given campaign, the overall spend remained stable.  It also kept each campaign within the limit of what a given advertising partner could profitably provide in the way of installs."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"Marketing spend went from $100/day to $40,000/day.  Business revenue grew by nearly 10x."}],
+              "short-information":"As LTV increased, marketing became possible for Rocket Games.  I was the sole marketer during the most expansive period in Rocket's history."
             },
             "bigbonus":{
               "title":"Big Bonus",
               "icon":"bigbonus.png",
               "role":"sole product manager, designer",
               "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
-              "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "google-link":"com.RocketGames.BigHitVegas",
+              "amazon-link":"Rocket-Speed-Big-Hit-Slots/dp/B01N63YA1E",
+              "facebook-link":"bighitvegas",
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""}],
+              "short-information":"Big Bonus was a quick follow up to another app, using the best ASO and economy practices it showed that the basics of video slots are strong."
             },
             "quest":{
               "title":"Vegas Roadtrip",
               "icon":"quest.png",
               "role":"sole product manager, sole designer, app launch and promotion",
               "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
+              "google-link":"com.RocketGames.ClassicFreeSlotsQuest",
+              "amazon-link":"Vegas-Roadtrip-Free-Classic-Slots/dp/B01LYUALPJ",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"Appeal to a broader audience than core slots players, specifically match three players."},{"type":"h2","content":"Design Process"},{"type":"text","content":"This app was designed with a look and feel to remind players of match three apps.  The player was to progress through an overworld, with each stop being a specific quest.  Some stops being harder than others."},{"type":"image","content":"roadtrip.png"},{"type":"text","content":"The player would get a choice between multiple slot machines and mutliple challenge types on any given stop.  This allowed for a player to min/max the gameplay, giving them a feeling of winning before they even spin."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"Upon launch this app received the best ratings and reviews, second highest retention, and third highest LTV of any app Rocket had launched (about 40 apps)"}],
+              "short-information":"We took a new look at how to structure the slots meta-game.  This combines questing and levels on an overworld with slots."
             },
             "tournaments":{
               "title":"Tournaments",
               "icon":"viva.png",
               "role":"sole product manager, sole designer",
-              "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
-              "facebook-link":"",
-              "information":{},
-              "short-information":"The tournaments UI on the left of the machine displays limited information.  The original design had more information but was too distracting and confusing.  We designed a system that would allow for real player data to be stored in parse, and for a tournament player to use that stored player data for a simulated real time tournament.  This allowed for playing against real players without the overhead of having a synchronous server backend.  This increased engagement and the competitive component increased conversion in high spending players.  Results determined with A/B on/off experiment."
+              "apple-link":"viva-slots-las-vegas-classic-casino-games/id1017064541?mt=8&ign-mpt=uo%3D4",
+              "google-link":"com.RocketGames.ClassicSlots",
+              "amazon-link":"B011WDWQ6O",
+              "facebook-link":"vivaslots",
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"Increase spins/time, conversion, retention"},{"type":"h2","content":"Design Process"},{"type":"text","content":"The tournaments UI on the left of the machine displays limited information.  The original design had more information but was too distracting and confusing."},{"type":"image","content":"tournaments.png"},{"type":"text","content":"We designed a system that would allow for real player data to be stored in parse, and for a tournament player to use that stored player data for a simulated real time tournament.  This allowed for playing against real players without the overhead of having a synchronous server backend."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"Increased engagement and the competitive component increased conversion in high spending players.  Results determined with A/B on/off experiment."}],
+              "short-information":"We designed a system that allowed for real players to compete, with a relatively low overhead."
             },
             "cowgirl":{
               "title":"Machine Progression",
               "icon":"cowgirl.png",
               "role":"sole product manager, sole designer, app launch and promotion",
               "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
+              "google-link":"com.RocketGames.Cowgirl",
+              "amazon-link":"Slots-Cowgirl-Ranch-Casino/dp/B00VSGZ9UQ",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app was the first in the Rocket catalogue to include a machien that had progression elements built in."
             },
             "oz":{
               "title":"Bursting Wilds",
               "icon":"oz.png",
               "role":"sole product manager, sole designer, app launch and promotion",
               "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
+              "google-link":"net.RocketSpeed.WonderfulWizardSlots",
+              "amazon-link":"Wonderful-Wizard-of-Oz-Slots/dp/B01MRDDFG2",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This was one of the first apps in the rocket catalogue to include randomized wilds."
             },
             "gameshow":{
               "title":"Maxed out Features",
               "icon":"gameshow.png",
               "role":"sole product manager, sole designer, app launch and promotion",
               "apple-link":"",
-              "google-link":"",
+              "google-link":"com.RocketGames.GameshowSlots",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app was an experiment in complexity, with multiple layers of features on a/b experiment."
             },
             "rio":{
               "title":"Simplified App",
               "icon":"rio.png",
-              "role":"sole developer, sole designer",
+              "role":"sole developer, sole designer, product manager",
               "apple-link":"",
-              "google-link":"",
+              "google-link":"net.RocketSpeed.RioJackpotSlots",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"Determine if a simplified app flow would increase retention and conversion."},{"type":"h2","content":"Design Process"},{"type":"text","content":"We looked at all the flows in the app, and determined where we could remove steps in the funnels.  The first step we removed was the lobby.  This made the player slower to enter the app and start spinning.  We hope to see an increase in percent spinning each day.  To accomodate other machines the lobby scene was changed to a dialog."},{"type":"text","content":"The second major change was around player choice.  Our largest apps had sixty slot machines.  Many of those machines were known to be worse than others.  For this app we chose four of the top performing machines, and put those in as the only machines.  The thinking behind this is that simplifying player choice would allow the players to experience only the good content.  We had also noticed the trend for players to gravitate to two to four machines with the vast majority of their playing.  Only having four machines would make sure that the two to four they chose would be the best we had to offer."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"The app is recently released, and analysis is still ongoing."}],
+              "short-information":"This app was an experiment in simplicity, with a focus on the base experience of slots."
             },
             "war":{
               "title":"Blue Leaning App",
               "icon":"war.png",
               "role":"designer, app launch and promotion",
               "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
+              "google-link":"com.RocketGames.WarSlotsOne",
+              "amazon-link":"Slots-War-Modern-Clash-Free/dp/B01JMZ5DNW",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app was the first of the mission apps, and was an attempt at getting a more male skewed audience."
             },
             "email":{
               "title":"Email Campaigns",
               "icon":"viva.png",
-              "role":"sole developer, sole designer",
+              "role":"sole developer, sole designer, product manager",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"This email system was set up for reactivating and retaining users, with minimal costs."},{"type":"h2","content":"Design Process"},{"type":"text","content":"We attempted to get email service providers to work with us, but the social casino space was not attractive to them.  Instead we set up SES to work from a python script automated through a Jenkins server.  The email was put together to look like a single image."},{"type":"image","content":"emailTogether.png"},{"type":"text","content":"The image was actually in seven parts, with links attached to each.  The top section went to the facebook community page.  The middle section was a deep link that was regulated through a Parse server.  The bottom right sections went to the app stores.  There was also an unsubscribe link that took the user to a google form, which autopopulated and submitted their email for unsubscribing."},{"type":"image","content":"emailSpaced.png"},{"type":"text","content":"The system was set up to be easy to manage and configure.  The python script pullled a config from google sheets, where the product mananager could set up what image to show, what the deep link should grant, how long the deep link should remain claimable, where the links on each component should go, who the email should go to, and what day the email should be sent.  The script then used the SQL query in the 'who the email should go to' cell to pull a list of emails from our redshift database.  After pulling those it pulled the list from the unsubscribe google form and removed any of those emails from the redshift list.  The Parse links were set up for the deep link credit grants and messages.  The email parts were put together and sent to all the people on the list.  If other emails were planned to be sent out that day it would pull those lists and remove any emails that had already received an email that day."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"The email was clearly able to reactivate players and payers, but did not show a strong measurable increase in retention."}],
+              "short-information":"This email system was set up for reactivating and retaining users, with minimal costs."
             },
             "crossPromo":{
               "title":"Intra-network Promotion",
               "icon":"crossPromo.png",
-              "role":"designer",
+              "role":"designer, product manager",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"To increase network retention, and ASO."},{"type":"h2","content":"Design Process"},{"type":"text","content":"We wanted the player to be introduced to the cross promotion system after they had already played for a period of time in their current game.  We did this by locking the system behind level 6 in our apps.  Once past level 6 the cross promotion system would appear in the lobby of the app.  There were multiple configurations of where and how it would appear, based on the given app, but the most common was as an extra card in the lobby on the left hand side.  In the image below the Tropicana machine is the cross promotion card."},{"type":"image","content":"crossPromotion.png"},{"type":"text","content":"Upon clicking the card the player would be taken to an Adjust link to track their click, and then taken to the app store.  The player could then install the new app."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"Using this system, along with marketing, we were able to get consistently get to the top new free casino charts as #1.  Cross network retention was never a/b tested, but it was clear that moving players to new apps could convert them to payers."}],
+              "short-information":"This system was designed as a simple way to leverage the network of the company, for quickly promoting apps."
             },
             "ooc":{
               "title":"Out of Credits Dialog",
               "icon":"ooc.png",
-              "role":"designer",
-              "apple-link":"",
-              "google-link":"",
-              "amazon-link":"",
-              "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "role":"designer, product manager",
+              "apple-link":"viva-slots-las-vegas-classic-casino-games/id1017064541?mt=8&ign-mpt=uo%3D4",
+              "google-link":"com.RocketGames.ClassicSlots",
+              "amazon-link":"B011WDWQ6O",
+              "facebook-link":"vivaslots",
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This dialog was modified to reduce the number of steps in the purchase funnel"
             }
 
             ,
             "fishCook":{
               "title":"Fish Cook: Kickstarter",
               "icon":"fishcook.jpg",
-              "role":"",
+              "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"We wanted to see if the general demand for board game ports was strong enough to support a business"},{"type":"h2","content":"Design Process"},{"type":"text","content":"We worked with Cheapass Games to build the Kickstarter campaign, and deliver the rewrads.  The app development took longer than anticipated, but a full delivery of the app was completed."},{"type":"text","content":"The major design challenge on this app was with the AI.  The general play of the game worked similarly to the backpack problem, with having to find the best set of things to buy.  The major difference from the backpack problem was that the purchases needed to make sets.  To do this I created a tree that created sets of sets, pruning any branches that looked to be inefficient as it grew."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"The app was successfully launched, and delivered.  However, we concluded that the board game digitization space was too small outside of the largest, and most well known, board game titles."}],
+              "short-information":"This kickstarted app was a collaboration with Cheapass Games to digitize a board game of theirs."
             },
             "jovios":{
               "title":"Jovios: Multi-Device Console",
               "icon":"jovios.png",
-              "role":"",
+              "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"The goal was to creat a software based console system.  Allowing for mobile phones to be used as controllers with a tablet, PC, or smart TV as the console."},{"type":"image","content":"playingJovios.jpg"},{"type":"h2","content":"Design Process"},{"type":"text","content":"We started with a simple demo of a single app that allowed the players to connect phones over LAN.  The players could customize their bot's colors from the phone and could connect for automated rounds of gameplay."},{"type":"image","content":"bot-a-boomBig.png"},{"type":"text","content":"The gameplay proved to be good and other apps were developed by Cat Duo to further deonstrate other control styles."},{"type":"video","content":"https://www.youtube.com/embed/308PF559X88"},{"type":"h2","content":"Outcomes"},{"type":"text","content":"While we were able to successfully produce prototypes, getting adoption required significant backing, which we were unable to procure."}],
+              "short-information":"This system allowed for mobile devices to act as controllers for a larger screened device acting as a console."
             },
             "bot-a-boom":{
               "title":"Bot-a-Boom",
               "icon":"bots.png",
-              "role":"",
+              "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app demonstrated the dual joystick functionality of the jovios system."
             },
             "snakes":{
               "title":"Snakes",
               "icon":"snakes.png",
-              "role":"",
+              "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app demonstrated the button and joystick combinations of the jovios system."
             },
             "bowling":{
               "title":"Bowling",
-              "icon":"",
-              "role":"",
+              "icon":"bowling.png",
+              "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app demonstrated the accelerometer integrations of the jovios system."
             },
             "cloudburst":{
               "title":"Cloudburst: Test App",
               "icon":"cloudburst.png",
-              "role":"",
+              "role":"sole developer, sole designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"This app was released to test the app release process and gague the ease of ranking in the app stores."
             }
 
             ,
             "frontierville":{
               "title":"Frontierville: The Jail",
-              "icon":"",
-              "role":"",
+              "icon":"frontierville.jpg",
+              "role":"product manager, designer",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Focus Project"},{"type":"text","content":"The Jailhouse"},{"type":"h2","content":"Design Goal"},{"type":"text","content":"To bring a new interaction paradigm to the game, increasing monetization."},{"type":"h2","content":"Design Process"},{"type":"text","content":"Our goal was to create a mystery that needed to be solved, as well as increase surfacing for features that we wanted to be the focal point of the game.  This was done using clues."},{"type":"image","content":"clue.png"},{"type":"text","content":"These clues would appear randomly around the play area, causing higher than normal interaction with the feature.  This interaction was sustained longer than normal as well.  The clues were reusable, and made appearances in multiple features."},{"type":"image","content":"jail.png"},{"type":"text","content":"We had a jail constructed, with follow up missions for each section to capture the criminal.  The heads of the bandits would appear in the building as they were caught.  This ended up being a complicated state machine, but due to the designer, developer, and artists working closely together it came together nicely."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"This feature was the second best feature of the quarter, out of twenty-four features."}],
+              "short-information":"During my time on Frontierville, one of my projects was a multi stage buildable jailhouse.  It was designed to have timed unlocks and multiple quests in progress at a given time."
             },
             "specTemplate":{
               "title":"Spec Template",
-              "icon":"",
-              "role":"",
+              "icon":"slides.png",
+              "role":"product manager",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":"The spec template was designed to allow designers, product managers, and developers to communicate with a common starting point."},{"type":"h2","content":"Design Process"},{"type":"text","content":"Using a set of previous specification documents (specs), I put together a template that had consistent places to call out major design decisions, and color coded sections based on who should be paying attention to what part of the spec."},{"type":"text","content":"After a first pass I started sitting down individually with the leads of different disciplines, in order to get their take on what needed to be in the template.  After completing the template I submitted it to the GM, who approved of it.  This is a good example of designing the design process, from Managing the Design Factory."},{"type":"h2","content":"Outcomes"},{"type":"text","content":"The template was adopted and used, make the spec process easier on the people writing and reading the specs.  It was used well past my tenure on Frontierville."}],
+              "short-information":"The spec template was designed to allow designers, product managers, and developers to communicate with a common starting point."
             },
             "semiautomatedreporting":{
               "title":"Semi-Automated Reporting",
-              "icon":"",
-              "role":"",
+              "icon":"sheets.png",
+              "role":"product manager",
               "apple-link":"",
               "google-link":"",
               "amazon-link":"",
               "facebook-link":"",
-              "information":{},
-              "short-information":""
+              "information":[{"type":"h2","content":"Design Goal"},{"type":"text","content":""},{"type":"h2","content":"Design Process"},{"type":"text","content":""},{"type":"h2","content":"Outcomes"},{"type":"text","content":""}],
+              "short-information":"These combinations of queries and spreadsheets allowed for the reporting to be streamlined."
             }
           }
         var app = "";
         if (window.location.href.split("single-project/").length > 1){
           app = window.location.href.split("single-project/")[1];
           this.set("button","display:none;");
-          config[app]["information"].forEach(renderPart);
+          this.$.information.innerHTML = "";
+          for(var i = 0; i < config[app]["information"].length; i++){
+            this.$.information.innerHTML += this.renderPart(config[app]["information"][i]);
+          }
         }
         else{
           app = this.app;
@@ -357,10 +374,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.set("title", config[app]["title"]);
         this.set("icon", config[app]["icon"]);
         this.set("role", config[app]["role"]);
-        this.set("apple-link", config[app]["apple-link"]);
-        this.set("google-link", config[app]["google-link"]);
-        this.set("amazon-link", config[app]["amazon-link"]);
-        this.set("facebook-link", config[app]["facebook-link"]);
+        if(config[app]["apple-link"] === ""){
+          this.$.apple.innerHTML = "";
+        }
+        else{
+          this.set("apple-link", config[app]["apple-link"]);
+        }
+        if(config[app]["google-link"] === ""){
+          this.$.google.innerHTML = "";
+        }
+        else{
+          this.set("google-link", config[app]["google-link"]);
+        }
+        if(config[app]["amazon-link"] === ""){
+          this.$.amazon.innerHTML = "";
+        }
+        else{
+          this.set("amazon-link", config[app]["amazon-link"]);
+        }
+        if(config[app]["facebook-link"] === ""){
+          this.$.facebook.innerHTML = "";
+        }
+        else{
+          this.set("facebook-link", config[app]["facebook-link"]);
+        }
       }
       ready() {
         super.ready();

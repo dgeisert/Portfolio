@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       #single{
-        height: 1000px;
+        height: 100%;
       }
       .bottomCentered {
         position: absolute;
@@ -40,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .Icon{
         width: 100px;
         height: 100px;
+        border-radius: 20px;
       }
       .Role{
         flex: 1;
@@ -76,52 +77,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .left{
         text-align: left;
       }
-      .Grid--fit > .AppDescriptionContainer {
+      .Grid--fit > app-container {
         flex: 1;
       }
-      .Grid--full > .AppDescriptionContainer {
-        flex: 0 0 100%;
+      .Grid--full > app-container {
+        flex: 0 0 90%;
       }
-      .Grid--1of2 > .AppDescriptionContainer {
+      .Grid--1of2 > app-container {
         flex: 0 0 50%
       }
-      .Grid--1of3 > .AppDescriptionContainer {
+      .Grid--1of3 > app-container {
         flex: 0 0 33%
       }
-      .Grid--1of4 > .AppDescriptionContainer {
+      .Grid--1of4 > app-container {
         flex: 0 0 25%
       }
       @media (min-width: 24em) {
-        .small-Grid--fit > .AppDescriptionContainer {
+        .small-Grid--fit > app-container {
           flex: 1;
         }
-        .small-Grid--full > .AppDescriptionContainer {
-          flex: 0 0 100%;
+        .small-Grid--full > app-container {
+          flex: 0 0 90%;
         }
-        .small-Grid--1of2 > .AppDescriptionContainer {
+        .small-Grid--1of2 > app-container {
           flex: 0 0 50%
         }
-        .small-Grid--1of3 > .AppDescriptionContainer {
+        .small-Grid--1of3 > app-container {
         flex: 0 0 33%
         }
-        .small-Grid--1of4 > .AppDescriptionContainer {
+        .small-Grid--1of4 > app-container {
           flex: 0 0 25%
         }
       }
       @media (min-width: 48em) {
-        .large-Grid--fit > .AppDescriptionContainer {
+        .large-Grid--fit > app-container {
           flex: 1;
         }
-        .large-Grid--full > .AppDescriptionContainer {
-          flex: 0 0 100%;
+        .large-Grid--full > app-container {
+          flex: 0 0 90%;
         }
-        .large-Grid--1of2 > .AppDescriptionContainer {
+        .large-Grid--1of2 > app-container {
           flex: 0 0 50%
         }
-        .large-Grid--1of3 > .AppDescriptionContainer {
+        .large-Grid--1of3 > app-container {
         flex: 0 0 33%
         }
-        .large-Grid--1of4 > .AppDescriptionContainer {
+        .large-Grid--1of4 > app-container {
           flex: 0 0 25%
         }
       }
