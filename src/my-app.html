@@ -27,6 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="my-view3.html">
 <link rel="lazy-import" href="my-view4.html">
 <link rel="lazy-import" href="my-view5.html">
+<link rel="lazy-import" href="my-view6.html">
 <link rel="lazy-import" href="my-single-project.html">
 <link rel="lazy-import" href="my-view404.html">
 
@@ -93,6 +94,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="view1" href="view1" class="SidebarHeader">About Me</a>
+          <a name="view6" href="view6" class="SidebarHeader">Recommendations</a>
           <a name="view2" href="view2" class="SidebarHeader">VR Side Projects</a>
           <a name="view3" href="view3" class="SidebarHeader">Rocket Games</a>
           <a name="view4" href="view4" class="SidebarHeader">Cat Duo</a>
@@ -116,6 +118,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <my-view1 name="view1"></my-view1>
+          <my-view6 name="view6"></my-view6>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
           <my-view4 name="view4"></my-view4>
