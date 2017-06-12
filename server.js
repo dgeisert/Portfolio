@@ -12,6 +12,7 @@ app.get('/', function (req, res) {
     res.sendFile("index.html", { root: '.' });
 });
 app.get('/view1/', function (req, res) {
+    res.sendFile("index.html", { root: '.' });
     res.sendFile("src/my-view1.html", { root: '.' });
 });
 app.get('/view2/', function (req, res) {
