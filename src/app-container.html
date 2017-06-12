@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
       <a href="single-project/{{app}}" class="bottomCentered">
-        <paper-button raised class="myButtons" style="{{button}}">DETAILS</paper-button>
+        <paper-button raised class="myButtons" style="{{button}}"><p>DETAILS</p></paper-button>
       </a>
       <h2>{{title}}</h2>
       <div class="IconRole">
@@ -417,7 +417,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           window.scrollTo(0, 0);
           for(var i = 0; i < config[app]["information"].length; i++){
             this.$.information.innerHTML += this.renderPart(config[app]["information"][i]);
-            this.$.nav.innerHTML = "<a href=\"single-project/"+config[app]["previous"]+"\"><paper-button raised class=\"myButtons\"><iron-icon icon=\"icons:arrow-back\"></iron-icon>"+config[config[app]["previous"]]["title"]+"</paper-button></a><a href=\"single-project/"+config[app]["next"]+"\"><paper-button raised class=\"myButtons\"><iron-icon icon=\"icons:arrow-forward\"></iron-icon>"+config[config[app]["next"]]["title"]+"</paper-button></a>"
+            this.$.nav.innerHTML = "<a href=\"single-project/"+config[app]["previous"]+"\"><paper-button raised class=\"myButtons\"><iron-icon icon=\"icons:arrow-back\"></iron-icon><p>"+config[config[app]["previous"]]["title"]+"</p></paper-button></a><a href=\"single-project/"+config[app]["next"]+"\"><paper-button raised class=\"myButtons\"><iron-icon icon=\"icons:arrow-forward\"></iron-icon><p>"+config[config[app]["next"]]["title"]+"</p></paper-button></a>"
           }
         }
         else{
