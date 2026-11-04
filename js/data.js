@@ -263,14 +263,15 @@ window.PORTFOLIO = {
     /* ---------------- AI PRODUCTS ---------------- */
     {
       slug: "play-machine", kind: "product", year: "2025",
-      title: "The Play Machine", award: "Describe. Play. Ship.",
-      blurb: "An AI game-creation tool that turns plain-language prompts into playable games, with generated code, art and audio.",
+      title: "The Play Machine", status: "No longer running",
+      blurb: "An AI game-creation tool that turned plain-language prompts into playable games, with generated code, art and audio.",
       tags: ["AI tool", "Game creation", "Founder"],
       image: "assets/img/playmachine.jpg", fallback: LOVABLE + "playmachine-D107z2nW.jpg",
-      links: [{ label: "theplaymachine.com", url: "https://theplaymachine.com" }],
+      links: [{ label: "Play a game made with it", url: "https://dgeisert.itch.io/trojan-general" }],
       body: `
-        <p class="lede">The Play Machine lets anyone describe a game and play it within minutes. Code, art and audio are all generated, and you keep refining it by talking to it.</p>
-        <p>I've used it to make my own jam games, including <a href="project.html?p=trojan-general">Trojan General</a>, Machine Colony, Phantom Crazy and Locked in the Pyramid. Using it myself shows me where AI is good at game design and where a designer still has to step in, especially on game feel, balance, and the first 30 seconds of play.</p>`
+        <p class="lede">The Play Machine let anyone describe a game and play it within minutes. Code, art and audio were all generated, and you kept refining the game by talking to it.</p>
+        <p>I used it to make my own jam games, including <a href="project.html?p=trojan-general">Trojan General</a>, <a href="https://dgeisert.itch.io/machine-colony" target="_blank" rel="noopener">Machine Colony</a>, <a href="https://dgeisert.itch.io/phantom-crazy" target="_blank" rel="noopener">Phantom Crazy</a> and <a href="https://dgeisert.itch.io/locked-in-the-pyramid" target="_blank" rel="noopener">Locked in the Pyramid</a>. Using it myself showed me where AI is good at game design and where a designer still has to step in, especially on game feel, balance, and the first 30 seconds of play.</p>
+        <p class="note">The Play Machine is no longer running. The games above are still playable on itch.io.</p>`
     },
     {
       slug: "story-machine-ai", kind: "product", year: "2025",
@@ -310,11 +311,11 @@ window.PORTFOLIO = {
     },
     {
       slug: "lifted-news", kind: "product", year: "2025",
-      title: "Lifted News",
-      blurb: "A daily news site that finds positive, hopeful stories from around the world.",
+      title: "Lifted News", status: "No longer running",
+      blurb: "A daily news site that found positive, hopeful stories from around the world.",
       tags: ["AI curation"],
       image: "assets/img/liftednews.jpg", fallback: LOVABLE + "liftednews-DWtpbrMG.jpg",
-      links: [{ label: "liftednews.com", url: "https://liftednews.com" }]
+      links: []
     },
 
     /* ---------------- AI FILMS ---------------- */

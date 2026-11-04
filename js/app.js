@@ -12,7 +12,8 @@
     return `<div class="img ${cls || ""}"><img loading="lazy" src="${p.image}" ${p.fallback ? `data-fallback="${p.fallback}"` : ""} alt="${esc(p.title)}"></div>`;
   }
   const tags = (p) => (p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("");
-  const href = (p) => (p.body ? `project.html?p=${p.slug}` : (p.links && p.links[0] ? p.links[0].url : "#"));
+  const href = (p) => (p.body ? `project.html?p=${p.slug}` : (p.links && p.links[0] ? p.links[0].url : ""));
+  const badge = (p) => (p.status ? `<div class="status">${esc(p.status)}</div>` : p.award ? `<div class="award">${esc(p.award)}</div>` : `<div class="meta">${p.year}</div>`);
 
   function card(p, size) {
     const h = href(p);
@@ -22,10 +23,10 @@
     if (size === "small") {
       return `<a class="card mini" href="${h}"${tgt(h)}>${media(p)}<div class="body"><h3>${esc(p.title)} <span class="yr">${p.year}</span></h3><p>${esc(p.blurb)}</p></div></a>`;
     }
-    return `<a class="card" href="${h}"${tgt(h)}>${media(p)}<div class="body">
-      ${p.award ? `<div class="award">${esc(p.award)}</div>` : `<div class="meta">${p.year}</div>`}
+    const inner = `${media(p)}<div class="body">${badge(p)}
       <h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p><div class="tags">${tags(p)}</div>
-      <span class="go">${p.body ? "Read the case study →" : "Open →"}</span></div></a>`;
+      ${h ? `<span class="go">${p.body ? "Read the case study →" : "Open →"}</span>` : ""}</div>`;
+    return h ? `<a class="card" href="${h}"${tgt(h)}>${inner}</a>` : `<article class="card">${inner}</article>`;
   }
 
   function fill(sel, list, size) { const el = $(sel); if (el) el.innerHTML = list.map((p) => card(p, size)).join(""); }
@@ -59,7 +60,7 @@
       el.innerHTML = `
         <p class="eyebrow">${{ game: "Game", pro: "Professional work", product: "AI product", film: "AI film" }[p.kind]} · ${p.year}</p>
         <h1>${esc(p.title)}</h1>
-        ${p.award ? `<div class="award big">${esc(p.award)}</div>` : ""}
+        ${p.status ? `<div class="status big">${esc(p.status)}</div>` : p.award ? `<div class="award big">${esc(p.award)}</div>` : ""}
         <p class="sub">${esc(p.blurb)}</p>
         <div class="tags">${tags(p)}</div>
         <div class="cta">${links}</div>
