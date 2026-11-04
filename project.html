@@ -6,20 +6,36 @@
 <title>Project · David Geisert</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
-<nav class="nav">
-  <a class="brand" href="./">DG<span>.</span></a>
-  <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
-  <div class="links">
-    <a href="./#games">Games</a><a href="./#jamference">Jamference</a><a href="./#work">Work</a><a href="./#products">AI Products</a><a href="./#films">Films</a><a href="./#about">About</a>
-    <a class="btn small" href="resume/David_Geisert_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+<body class="page-project">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./" aria-label="David Geisert, home"><span class="brand-mark">DG</span><span class="brand-name">David Geisert</span></a>
+    <nav aria-label="Primary">
+      <ul class="links" id="menu">
+        <li><a href="./#work">Case studies</a></li>
+        <li><a href="./#games">Games</a></li>
+        <li><a href="./#jamference">Jamference</a></li>
+        <li><a href="./#founder">Products &amp; films</a></li>
+        <li><a href="./#about">About</a></li>
+        <li class="menu-only"><a href="resume/David_Geisert_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn small ghost hide-sm" href="resume/David_Geisert_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a class="btn small" href="./#contact">Get in touch</a>
+      <button class="menu-btn" aria-controls="menu" aria-expanded="false" aria-label="Open menu"><span class="bars" aria-hidden="true"></span></button>
+    </div>
   </div>
-</nav>
-<main id="project" class="wrap project"></main>
-<footer class="wrap foot"><a href="./">← Back to all work</a></footer>
+</header>
+
+<main id="main"><div id="project" class="wrap project"></div></main>
+<footer class="foot wrap"><a href="./">← David Geisert · all work</a><a href="#main">Back to top <span aria-hidden="true">↑</span></a></footer>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 </body>

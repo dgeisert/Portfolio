@@ -3,11 +3,11 @@
 A plain HTML/CSS/JS portfolio with no build step, hosted on GitHub Pages.
 
 ```
-index.html        Home page (games, Jamference, work, products, films, about)
+index.html        Home page (what I bring, case studies, games, Jamference, products & films, about)
 project.html      Case-study page. Opened as project.html?p=<slug>
 js/data.js        ALL CONTENT: projects, awards and links. Edit this file to update the site.
-js/app.js         Rendering, image fallbacks, YouTube embeds, mobile menu
-css/style.css     Styles
+js/app.js         Rendering, image fallbacks, YouTube embeds, nav and mobile menu
+css/style.css     Styles: layout and components first, theme colours and type at the end
 resume/           David_Geisert_Resume.pdf (linked from the nav)
 assets/img/       Local images (see below)
 CNAME             portfolio.geisert.me (needed for the custom domain)
@@ -15,7 +15,7 @@ CNAME             portfolio.geisert.me (needed for the custom domain)
 
 ## Add a project
 
-Add an object to `projects` in `js/data.js`. If you include `body` (HTML), it gets a case-study page. Without one, the card links straight to the first entry in `links`. Set `featured: true` on a game to put it in the large top grid.
+Add an object to `projects` in `js/data.js`. If you include `body` (HTML), it gets a case-study page. Without one, the card links straight to the first entry in `links`. Set `featured: true` on a game to put it in the large top grid. Set `caseOrder` (plus optional `company`, `role`, `team`, `timeline`, `outcome`) to show a project in "Selected case studies".
 
 ## Images to copy over from the Lovable project
 

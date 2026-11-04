@@ -1,7 +1,9 @@
 /* All portfolio content lives here. Edit this file to add or change projects.
    kind: "game" | "pro" | "product" | "film"
    image: local path (assets/img/...) or remote URL. "fallback" is used if the image fails to load.
-   body: optional HTML for the project page. links: buttons shown on cards and project pages. */
+   body: optional HTML for the project page. links: buttons shown on cards and project pages.
+   caseOrder: puts a project in "Selected case studies" (1 = first). company, role, team, timeline,
+   outcome: shown as facts on case-study rows and project pages (all optional). */
 
 const LOVABLE = "https://dgeisert-portfolio.lovable.app/assets/";
 const ITCH = "https://img.itch.zone/";
@@ -54,7 +56,8 @@ window.PORTFOLIO = {
         <p>Under the No Text rule, the game can't explain anything in writing. Run, jump, float and belly-dive are all taught through the layout of the level, the camera and feedback, so players learn by playing.</p>`
     },
     {
-      slug: "kitty-kingdom", kind: "game", featured: true, year: "2026",
+      slug: "kitty-kingdom",
+      caseOrder: 2, company: "Jamference #1 → full game", role: "Game design, prototyping and playtesting", timeline: "One-week jam, then ongoing", outcome: "Rated Most Fun of the jam; now a roguelite with a campaign", kind: "game", featured: true, year: "2026",
       title: "Kitty Kingdom: And the Robot Menace", award: "Most Fun · Jamference #1",
       blurb: "A roguelite hex tower-defence game: build by day, fight off an army of cleaning robots by night.",
       tags: ["Tower defence", "Roguelite", "Deck-building", "Hex"],
@@ -100,7 +103,8 @@ window.PORTFOLIO = {
         <p>Flicksync won <b>Machine Learning &amp; AI</b> and <b>Innovative Entertainment</b>. I recently went back and revived it, so you can try it again on mobile or VR.</p>`
     },
     {
-      slug: "severed-heads-united-hearts", kind: "game", featured: true, year: "2023",
+      slug: "severed-heads-united-hearts",
+      caseOrder: 3, company: "Mini Jam 132", role: "Game design and AI behaviour tuning", timeline: "Game jam", outcome: "Rules for tuning LLM agents: clear goals, hard but beatable, firm guardrails", kind: "game", featured: true, year: "2023",
       title: "Severed Heads, United Hearts", award: "LLM agents as the mechanic",
       blurb: "Win over a royal court of AI agents by working out what each one wants, or lose your head to your rival Henry.",
       tags: ["LLM agents", "Social deduction", "Dialogue"],
@@ -181,7 +185,8 @@ window.PORTFOLIO = {
 
     /* ---------------- PROFESSIONAL ---------------- */
     {
-      slug: "ninja-legends", kind: "pro", year: "2019",
+      slug: "ninja-legends",
+      caseOrder: 1, company: "Coinflip Studios", role: "Co-founder, lead designer & developer", timeline: "A few months", outcome: "$1M+ revenue on Quest, Rift, Steam and PSVR", kind: "pro", year: "2019",
       title: "Ninja Legends", award: "$1M+ revenue",
       blurb: "A fast melee VR game and one of the first post-launch titles on Oculus Quest.",
       tags: ["VR", "Lead designer & dev", "Coinflip Studios"],
@@ -195,7 +200,8 @@ window.PORTFOLIO = {
         <p>Being early to a near-empty store paid off. We built the game in a few months, it shipped on Quest, Rift, Steam and PlayStation VR, and it made over <b>$1M</b>.</p>`
     },
     {
-      slug: "object-locking-ai", kind: "pro", year: "2024",
+      slug: "object-locking-ai",
+      caseOrder: 4, company: "Meta Reality Labs", role: "Senior Product Design Prototyper, led prototyping", team: "6 people", timeline: "3 months", outcome: "Shown at Meta Connect; won executive buy-in for more R&D", kind: "pro", year: "2024",
       title: "Object Locking AI · Meta Connect", award: "Meta Connect demo",
       blurb: "AR glasses that recognise real objects, pin stable 3D markers to them, and pass what they see to an LLM.",
       tags: ["AR", "Spatial AI", "Meta Orion", "Team of 6"],
@@ -218,7 +224,8 @@ window.PORTFOLIO = {
         <p>It was featured in the Meta Connect demo, won executive buy-in for more R&amp;D, and led to follow-on prototypes in real-time object and face tracking.</p>`
     },
     {
-      slug: "orion-ar-glasses", kind: "pro", year: "2023–25",
+      slug: "orion-ar-glasses",
+      caseOrder: 5, company: "Meta Reality Labs", role: "Prototyping lead for Messenger & WhatsApp", timeline: "2 years", outcome: "User-study findings shaped the final messaging design on Orion", kind: "pro", year: "2023–25",
       title: "Orion AR Messaging", award: "2 years on Orion",
       blurb: "Messaging that respects your attention on always-on AR glasses, shaped by on-device user studies.",
       tags: ["AR", "UX research", "Multimodal", "AI prioritisation"],
@@ -245,7 +252,8 @@ window.PORTFOLIO = {
         <p>The core insight: <b>in spatial computing, attention is the scarcest resource</b>, so design to protect it rather than to maximise engagement. These findings shaped the final messaging design on Orion.</p>`
     },
     {
-      slug: "colocation-systems", kind: "pro", year: "2020–22",
+      slug: "colocation-systems",
+      company: "Meta Reality Labs", role: "Lead designer & prototyper", outcome: "Shipped safety systems and published developer samples", kind: "pro", year: "2020–22",
       title: "Colocation & Room Setup for Quest",
       blurb: "Safety systems for headsets sharing one physical space, and room reconstruction that let users add objects to the play area.",
       tags: ["VR", "Mixed reality", "Safety"],
@@ -274,7 +282,8 @@ window.PORTFOLIO = {
         <p class="note">The Play Machine is no longer running. The games above are still playable on itch.io.</p>`
     },
     {
-      slug: "story-machine-ai", kind: "product", year: "2025",
+      slug: "story-machine-ai",
+      company: "Story Machine AI", role: "Founder & CEO: product, design and architecture", team: "2 engineers and a marketer", timeline: "MVP in about a month", outcome: "Live users and revenue; ByteDance-backed feature film", kind: "product", year: "2025",
       title: "Story Machine AI", award: "Founder & CEO",
       blurb: "An AI filmmaking platform that takes you from idea to finished video, with reusable characters and scenes.",
       tags: ["AI pipeline", "UX", "React / Supabase"],
@@ -296,7 +305,8 @@ window.PORTFOLIO = {
         <p>We shipped to production with live users and small revenue, and partnered with ByteDance on a feature film made in 5 weeks on a $2,500 generation budget (<a href="project.html?p=speakeasy-revenge">Speakeasy Revenge</a>).</p>`
     },
     {
-      slug: "another-like-that", kind: "product", year: "2026",
+      slug: "another-like-that",
+      role: "Founder: design and build", timeline: "3 weeks to launch", kind: "product", year: "2026",
       title: "Another Like That",
       blurb: "Find London events similar to the ones you already love. Built on vector similarity, and live in 3 weeks.",
       tags: ["Recommendations", "Systems design"],
