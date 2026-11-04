@@ -57,7 +57,7 @@ window.PORTFOLIO = {
     },
     {
       slug: "kitty-kingdom",
-      caseOrder: 2, company: "Jamference #1 → full game", role: "Game design, prototyping and playtesting", timeline: "One-week jam, then ongoing", outcome: "Rated Most Fun of the jam; now a roguelite with a campaign", kind: "game", featured: true, year: "2026",
+      caseOrder: 3, company: "Jamference #1 → full game", role: "Game design, prototyping and playtesting", timeline: "One-week jam, then ongoing", outcome: "Rated Most Fun of the jam; now a roguelite with a campaign", kind: "game", featured: true, year: "2026",
       title: "Kitty Kingdom: And the Robot Menace", award: "Most Fun · Jamference #1",
       blurb: "A roguelite hex tower-defence game: build by day, fight off an army of cleaning robots by night.",
       tags: ["Tower defence", "Roguelite", "Deck-building", "Hex"],
@@ -84,7 +84,7 @@ window.PORTFOLIO = {
       title: "Flicksync", award: "Double winner · Creating Reality 2018",
       blurb: "Act out a scene from Alice in Wonderland in VR. Speech recognition scores your lines, and the AI cast reacts.",
       tags: ["VR", "Voice input", "AI characters", "Hackathon"],
-      image: "", art: "flicksync",
+      image: "assets/img/flicksync.jpg", art: "flicksync",
       links: [
         { label: "VR APK", url: "https://drive.google.com/file/d/1NX1JHu7Q01gWpvYEJ3087m2XKQgpWvPO/view?usp=drive_link" },
         { label: "Mobile APK (Alice only)", url: "https://drive.google.com/file/d/1obqwQojm5GuJUhX7oqejkHNHkSSfQH6h/view?usp=drive_link" }
@@ -104,7 +104,7 @@ window.PORTFOLIO = {
     },
     {
       slug: "severed-heads-united-hearts",
-      caseOrder: 3, company: "Mini Jam 132", role: "Game design and AI behaviour tuning", timeline: "Game jam", outcome: "Rules for tuning LLM agents: clear goals, hard but beatable, firm guardrails", kind: "game", featured: true, year: "2023",
+      caseOrder: 4, company: "Mini Jam 132", role: "Game design and AI behaviour tuning", timeline: "Game jam", outcome: "Rules for tuning LLM agents: clear goals, hard but beatable, firm guardrails", kind: "game", featured: true, year: "2023",
       title: "Severed Heads, United Hearts", award: "LLM agents as the mechanic",
       blurb: "Win over a royal court of AI agents by working out what each one wants, or lose your head to your rival Henry.",
       tags: ["LLM agents", "Social deduction", "Dialogue"],
@@ -185,8 +185,41 @@ window.PORTFOLIO = {
 
     /* ---------------- PROFESSIONAL ---------------- */
     {
+      slug: "jamference",
+      caseOrder: 1, company: "Jamference", role: "Founder & host: briefs, rubric, community, playthrough feedback, and an entry every round", timeline: "Fortnightly since Oct 2026", outcome: "80 games made so far; every entry, mine included, rated by fellow participants", kind: "pro", year: "2026",
+      title: "Jamference", award: "Founder & host",
+      blurb: "A free, fortnightly AI game jam where every brief pairs a theme with a design restriction, and the players rate the games.",
+      tags: ["Game jam", "Creative facilitation", "Playtesting", "AI-assisted"],
+      image: "assets/img/jamference.gif",
+      links: [
+        { label: "jamference.com", url: "https://jamference.com" },
+        { label: "Previous jams", url: "https://jamference.com/previous-jams.html" }
+      ],
+      body: `
+        <p class="lede">I founded and host Jamference, a free, week-long game jam on itch.io that starts a new round every two weeks. It's about making games <i>with</i> AI, out in the open, and it's judged by the people who play the games: the other entrants.</p>
+        <h3>The problem</h3>
+        <p>AI makes it easy to produce a game quickly, but quick isn't the same as fun. Without a constraint, most AI games reach for the obvious use of the technology, and without real players nobody finds out whether the result is any good.</p>
+        <h3>How I designed the jam</h3>
+        <ul>
+          <li><b>A theme plus a mandatory restriction.</b> "Movement Input Only", "Playable on Mobile" and "No Text" each force a design decision up front and push people past the obvious use of AI.</li>
+          <li><b>Fun comes first in the rubric.</b> Entries are rated on <b>Fun, AI Use, Polish and Theme</b>, so a technically impressive game that isn't enjoyable to play doesn't win.</li>
+          <li><b>Participants rate each other's games.</b> Every entrant plays and scores the others, so every game gets real playtesting from people who have just worked through the same brief.</li>
+          <li><b>A playthrough video for every entry.</b> I play each participant's game on video and talk through my feedback as I go, so every entrant can see exactly where a player got hooked, confused or stuck.</li>
+          <li><b>Open about the tools.</b> Entrants show which AI tools they used and what each one did, so the community learns what actually works.</li>
+        </ul>
+        <h3>Playing by my own rules</h3>
+        <p>I make a game every round and it's rated alongside everyone else's. My Jamference #1 entry, <a href="project.html?p=kitty-kingdom">Kitty Kingdom</a>, was rated the <b>most fun game</b> of the jam, and I've kept developing it into a full roguelite. For #3's No Text rule I made <a href="project.html?p=starry-meows">Starry Meows</a>, where run, jump, float and dive are taught by level layout, camera and feedback alone.</p>
+        <h3>Rounds so far</h3>
+        <p>Participants have made <b>80 games</b> for Jamference so far.</p>
+        <ol>
+          <li><b>Cat and Robot</b>, restriction Movement Input Only (Oct 2026)</li>
+          <li><b>Crafting</b>, restriction Playable on Mobile (Oct 2026)</li>
+          <li><b>Great Works of Art</b>, restriction No Text (Oct–Nov 2026)</li>
+        </ol>`
+    },
+    {
       slug: "ninja-legends",
-      caseOrder: 1, company: "Coinflip Studios", role: "Co-founder, lead designer & developer", timeline: "A few months", outcome: "$1M+ revenue on Quest, Rift, Steam and PSVR", kind: "pro", year: "2019",
+      caseOrder: 2, company: "Coinflip Studios", role: "Co-founder, lead designer & developer", timeline: "A few months", outcome: "$1M+ revenue on Quest, Rift, Steam and PSVR", kind: "pro", year: "2019",
       title: "Ninja Legends", award: "$1M+ revenue",
       blurb: "A fast melee VR game and one of the first post-launch titles on Oculus Quest.",
       tags: ["VR", "Lead designer & dev", "Coinflip Studios"],
@@ -201,7 +234,7 @@ window.PORTFOLIO = {
     },
     {
       slug: "object-locking-ai",
-      caseOrder: 4, company: "Meta Reality Labs", role: "Senior Product Design Prototyper, led prototyping", team: "6 people", timeline: "3 months", outcome: "Shown at Meta Connect; won executive buy-in for more R&D", kind: "pro", year: "2024",
+      caseOrder: 5, company: "Meta Reality Labs", role: "Senior Product Design Prototyper, led prototyping", team: "6 people", timeline: "3 months", outcome: "Shown at Meta Connect; won executive buy-in for more R&D", kind: "pro", year: "2024",
       title: "Object Locking AI · Meta Connect", award: "Meta Connect demo",
       blurb: "AR glasses that recognise real objects, pin stable 3D markers to them, and pass what they see to an LLM.",
       tags: ["AR", "Spatial AI", "Meta Orion", "Team of 6"],
@@ -225,7 +258,7 @@ window.PORTFOLIO = {
     },
     {
       slug: "orion-ar-glasses",
-      caseOrder: 5, company: "Meta Reality Labs", role: "Prototyping lead for Messenger & WhatsApp", timeline: "2 years", outcome: "User-study findings shaped the final messaging design on Orion", kind: "pro", year: "2023–25",
+      caseOrder: 6, company: "Meta Reality Labs", role: "Prototyping lead for Messenger & WhatsApp", timeline: "2 years", outcome: "User-study findings shaped the final messaging design on Orion", kind: "pro", year: "2023–25",
       title: "Orion AR Messaging", award: "2 years on Orion",
       blurb: "Messaging that respects your attention on always-on AR glasses, shaped by on-device user studies.",
       tags: ["AR", "UX research", "Multimodal", "AI prioritisation"],
