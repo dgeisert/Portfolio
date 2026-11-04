@@ -13,12 +13,13 @@
   }
   const tags = (p) => (p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("");
   const href = (p) => (p.body ? `project.html?p=${p.slug}` : (p.links && p.links[0] ? p.links[0].url : ""));
-  const badge = (p) => (p.status ? `<div class="status">${esc(p.status)}</div>` : p.award ? `<div class="award">${esc(p.award)}</div>` : `<div class="meta">${p.year}</div>`);
+  const pill = (p) => (p.status ? `<span class="status">${esc(p.status)}</span>` : p.award ? `<span class="award">${esc(p.award)}</span>` : "");
+  const badge = (p) => `<div class="badges"><span class="meta">${esc(p.year)}</span>${pill(p)}</div>`;
 
   function card(p, size) {
     const h = href(p);
     if (p.kind === "film") {
-      return `<article class="card film">${media(p)}<div class="body"><div class="meta">${p.year}</div><h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p><div class="tags">${tags(p)}</div></div></article>`;
+      return `<article class="card film">${media(p)}<div class="body">${badge(p)}<h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p><div class="tags">${tags(p)}</div></div></article>`;
     }
     if (size === "small") {
       return `<a class="card mini" href="${h}"${tgt(h)}>${media(p)}<div class="body"><h3>${esc(p.title)} <span class="yr">${p.year}</span></h3><p>${esc(p.blurb)}</p></div></a>`;

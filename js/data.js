@@ -9,11 +9,11 @@ const ITCH = "https://img.itch.zone/";
 window.PORTFOLIO = {
   recognition: [
     { title: "Digital Champion of the Year 2026", by: "Camden Digital Inclusion", note: "For my AI talks to the Camden community." },
-    { title: "Winner, Multimodal AI", by: "AI Tinkerers Demopalooza · MongoDB.local London", note: "Made a music video live on stage in a 5-minute speed run.", link: "https://www.linkedin.com/posts/dgeisert_story-machine-activity-7381691095761489920-B397" },
-    { title: "4th place", by: "Cursor 2.5-hour Hackathon · London 2025", note: "Cursor Party, a party-based survivor-like.", link: "project.html?p=cursor-party" },
-    { title: "Most Fun entry", by: "Jamference #1 · 2026", note: "Kitty Kingdom, rated the most fun game of the jam.", link: "project.html?p=kitty-kingdom" },
-    { title: "Double winner", by: "Creating Reality Hackathon · USC 2018", note: "Flicksync: ML & AI and Innovative Entertainment.", link: "project.html?p=flicksync" },
-    { title: "7th place", by: "Hugging Face Open Source AI Game Jam 2023", note: "Hexagon Tactics, with AI-generated units in real time.", link: "project.html?p=hexagon-tactics" },
+    { title: "Winner, Multimodal AI", by: "AI Tinkerers Demopalooza · MongoDB.local London · Oct 2025", note: "Made a music video live on stage in a 5-minute speed run.", link: "https://www.linkedin.com/posts/dgeisert_story-machine-activity-7381691095761489920-B397" },
+    { title: "4th place", by: "Cursor 2.5-hour Hackathon · London · Sep 2025", note: "Cursor Party, a party-based survivor-like.", link: "project.html?p=cursor-party" },
+    { title: "Most Fun entry", by: "Jamference #1 · Oct 2026", note: "Kitty Kingdom, rated the most fun game of the jam.", link: "project.html?p=kitty-kingdom" },
+    { title: "Double winner", by: "Creating Reality Hackathon · USC · Mar 2018", note: "Flicksync: ML & AI and Innovative Entertainment.", link: "project.html?p=flicksync" },
+    { title: "7th place", by: "Hugging Face Open Source AI Game Jam · 2023", note: "Hexagon Tactics, with AI-generated units in real time.", link: "project.html?p=hexagon-tactics" },
   ],
 
   projects: [
@@ -100,14 +100,14 @@ window.PORTFOLIO = {
         <p>Flicksync won <b>Machine Learning &amp; AI</b> and <b>Innovative Entertainment</b>. I recently went back and revived it, so you can try it again on mobile or VR.</p>`
     },
     {
-      slug: "severed-heads-united-hearts", kind: "game", featured: true, year: "2024",
+      slug: "severed-heads-united-hearts", kind: "game", featured: true, year: "2023",
       title: "Severed Heads, United Hearts", award: "LLM agents as the mechanic",
       blurb: "Win over a royal court of AI agents by working out what each one wants, or lose your head to your rival Henry.",
       tags: ["LLM agents", "Social deduction", "Dialogue"],
       image: "https://geisert.me/wp-content/uploads/2024/02/fnb5l_.png",
       links: [{ label: "Play on itch.io", url: "https://dgeisert.itch.io/severed-heads-united-hearts" }],
       body: `
-        <p class="lede">My first experiment with putting LLMs at the centre of the gameplay (2024).</p>
+        <p class="lede">My first experiment with putting LLMs at the centre of the gameplay, made for Mini Jam 132 in 2023.</p>
         <p>You chat freely with AI courtiers and try to persuade them to vote for your side over your rival, Henry. Each one has their own motives. You have to work out what they want and promise it to them, without overcommitting.</p>
         <h3>What I learned about tuning AI behaviour</h3>
         <ul>
@@ -137,25 +137,25 @@ window.PORTFOLIO = {
       links: [{ label: "Play", url: "https://dgeisert.itch.io/downriver" }]
     },
     {
-      slug: "tea-party-defense", kind: "game", year: "2025",
+      slug: "tea-party-defense", kind: "game", year: "2026",
       title: "Tea Party Defense", blurb: "The cutlery has to hold the table against waves of baked goods. Each tower you build makes the next one of that type cost more.",
       tags: ["Tower defence"], image: ITCH + "aW1hZ2UvNDg5NjAwNy8yOTI2ODQ5OS5wbmc=/original/cOoTpg.png",
       links: [{ label: "Play", url: "https://dgeisert.itch.io/tea-party-defense" }]
     },
     {
-      slug: "trojan-general", kind: "game", year: "2025",
+      slug: "trojan-general", kind: "game", year: "2026",
       title: "Trojan General", blurb: "You're secretly on the enemy's side, so deploy your own army badly enough that it loses. Made with The Play Machine.",
       tags: ["Strategy", "Inverted goal"], image: ITCH + "aW1hZ2UvNDY1MTE3Mi8yNzcxNjM0Ny5wbmc=/original/7mwF9v.png",
       links: [{ label: "Play", url: "https://dgeisert.itch.io/trojan-general" }]
     },
     {
-      slug: "ballaga", kind: "game", year: "2025",
+      slug: "ballaga", kind: "game", year: "2026",
       title: "Ballaga", blurb: "Consume enemies to make power balls, then fire them back. Playable on mobile.",
       tags: ["Arcade", "Mobile"], image: ITCH + "aW1hZ2UvNDg1NTAwMC8yOTAwNTM5Ni5wbmc=/original/JLfW2K.png",
       links: [{ label: "Play", url: "https://dgeisert.itch.io/ballaga" }]
     },
     {
-      slug: "island-builder", kind: "game", year: "2024",
+      slug: "island-builder", kind: "game", year: "2023",
       title: "Island Builder", blurb: "A card-based roguelite: build an island and fill it with animals for points. AI helped with the code and assets.",
       tags: ["Roguelite", "Cards"], image: "https://geisert.me/wp-content/uploads/2024/02/reeffishfull.png",
       links: [{ label: "Play", url: "https://dgeisert.itch.io/island-builder" }]
@@ -167,7 +167,7 @@ window.PORTFOLIO = {
       links: [{ label: "Play", url: "https://dgeisert.itch.io/dragon-party" }]
     },
     {
-      slug: "scuba-steph", kind: "game", year: "2024",
+      slug: "scuba-steph", kind: "game", year: "2023",
       title: "Scuba Steph", blurb: "A narrative cave-diving experience, with AI-generated art and narration.",
       tags: ["Narrative"], image: "https://geisert.me/wp-content/uploads/2024/02/izfvzd.png",
       links: [{ label: "Play", url: "https://dgeisert.itch.io/scuba-steph" }]
@@ -218,7 +218,7 @@ window.PORTFOLIO = {
         <p>It was featured in the Meta Connect demo, won executive buy-in for more R&amp;D, and led to follow-on prototypes in real-time object and face tracking.</p>`
     },
     {
-      slug: "orion-ar-glasses", kind: "pro", year: "2022–24",
+      slug: "orion-ar-glasses", kind: "pro", year: "2023–25",
       title: "Orion AR Messaging", award: "2 years on Orion",
       blurb: "Messaging that respects your attention on always-on AR glasses, shaped by on-device user studies.",
       tags: ["AR", "UX research", "Multimodal", "AI prioritisation"],
@@ -245,7 +245,7 @@ window.PORTFOLIO = {
         <p>The core insight: <b>in spatial computing, attention is the scarcest resource</b>, so design to protect it rather than to maximise engagement. These findings shaped the final messaging design on Orion.</p>`
     },
     {
-      slug: "colocation-systems", kind: "pro", year: "2021–22",
+      slug: "colocation-systems", kind: "pro", year: "2020–22",
       title: "Colocation & Room Setup for Quest",
       blurb: "Safety systems for headsets sharing one physical space, and room reconstruction that let users add objects to the play area.",
       tags: ["VR", "Mixed reality", "Safety"],
@@ -262,7 +262,7 @@ window.PORTFOLIO = {
 
     /* ---------------- AI PRODUCTS ---------------- */
     {
-      slug: "play-machine", kind: "product", year: "2025",
+      slug: "play-machine", kind: "product", year: "2026",
       title: "The Play Machine", status: "No longer running",
       blurb: "An AI game-creation tool that turned plain-language prompts into playable games, with generated code, art and audio.",
       tags: ["AI tool", "Game creation", "Founder"],
@@ -296,7 +296,7 @@ window.PORTFOLIO = {
         <p>We shipped to production with live users and small revenue, and partnered with ByteDance on a feature film made in 5 weeks on a $2,500 generation budget (<a href="project.html?p=speakeasy-revenge">Speakeasy Revenge</a>).</p>`
     },
     {
-      slug: "another-like-that", kind: "product", year: "2025",
+      slug: "another-like-that", kind: "product", year: "2026",
       title: "Another Like That",
       blurb: "Find London events similar to the ones you already love. Built on vector similarity, and live in 3 weeks.",
       tags: ["Recommendations", "Systems design"],
@@ -310,7 +310,7 @@ window.PORTFOLIO = {
         <ul><li><b>Pages should feel alive</b>, not like a static directory.</li><li><b>Don't overload the user.</b> Discovery should feel like a happy accident, not a chore.</li></ul>`
     },
     {
-      slug: "lifted-news", kind: "product", year: "2025",
+      slug: "lifted-news", kind: "product", year: "2026",
       title: "Lifted News", status: "No longer running",
       blurb: "A daily news site that found positive, hopeful stories from around the world.",
       tags: ["AI curation"],
