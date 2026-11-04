@@ -266,7 +266,7 @@ window.PORTFOLIO = {
       title: "The Play Machine", status: "No longer running",
       blurb: "An AI game-creation tool that turned plain-language prompts into playable games, with generated code, art and audio.",
       tags: ["AI tool", "Game creation", "Founder"],
-      image: "assets/img/playmachine.jpg", fallback: LOVABLE + "playmachine-D107z2nW.jpg",
+      image: "assets/img/playmachine.png", fallback: LOVABLE + "playmachine-D107z2nW.jpg",
       links: [{ label: "Play a game made with it", url: "https://dgeisert.itch.io/trojan-general" }],
       body: `
         <p class="lede">The Play Machine let anyone describe a game and play it within minutes. Code, art and audio were all generated, and you kept refining the game by talking to it.</p>
