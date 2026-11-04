@@ -1,108 +1,55 @@
-# Polymer App Toolbox - Starter Kit
+# portfolio.geisert.me
 
-[![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)
+A plain HTML/CSS/JS portfolio with no build step, hosted on GitHub Pages.
 
-This template is a starting point for building apps using a drawer-based
-layout. The layout is provided by `app-layout` elements.
+```
+index.html        Home page (games, Jamference, work, products, films, about)
+project.html      Case-study page. Opened as project.html?p=<slug>
+js/data.js        ALL CONTENT: projects, awards and links. Edit this file to update the site.
+js/app.js         Rendering, image fallbacks, YouTube embeds, mobile menu
+css/style.css     Styles
+resume/           David_Geisert_Resume.pdf (linked from the nav)
+assets/img/       Local images (see below)
+CNAME             portfolio.geisert.me (needed for the custom domain)
+```
 
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
+## Add a project
 
-The PRPL pattern, in a nutshell:
+Add an object to `projects` in `js/data.js`. If you include `body` (HTML), it gets a case-study page. Without one, the card links straight to the first entry in `links`. Set `featured: true` on a game to put it in the large top grid.
 
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
+## Images to copy over from the Lovable project
 
-### Migrating from Polymer Starter Kit v1?
+These five images exist only in the Lovable project. Until you add them, the site loads them from the old Lovable URLs as a fallback. Copy them from your Lovable repo's `src/assets/` (or save them from the live site) into `assets/img/` with these names:
 
-[Check out our blog post that covers what's changed in PSK2 and how to migrate!](https://www.polymer-project.org/1.0/blog/2016-08-18-polymer-starter-kit-or-polymer-cli.html)
+| File | From the Lovable site |
+|---|---|
+| `profile.jpg` | /assets/profile-DqMNnW2W.jpeg |
+| `storymachine.png` | /assets/storymachine-DQ6-jpDd.png |
+| `anotherlikethat.png` | /assets/anotherlikethat-DIMZDGCu.png |
+| `liftednews.jpg` | /assets/liftednews-DWtpbrMG.jpg |
+| `playmachine.jpg` | /assets/playmachine-D107z2nW.jpg |
 
-### Quickstart
+Also add `og.jpg` (1200×630), the social preview image used when the link is shared. A screenshot of the hero works well.
 
-We've recorded a Polycast to get you up and running with PSK2 fast!
+Game images are hotlinked from itch.io and geisert.me, so they update when you change them there.
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=HgJ0XCyBwzY&list=PLNYkxOF6rcIDdS7HWIC_BYRunV6MHs5xo&index=10">
-    <img src="https://img.youtube.com/vi/HgJ0XCyBwzY/0.jpg" alt="Polymer Starter Kit 2 video">
-  </a>
-</p>
+## Deploy
 
-### Setup
+1. **Push.** This folder is a clone of `github.com/dgeisert/Portfolio` (branch `master`). After making changes:
+   ```
+   git add -A && git commit -m "Update portfolio" && git push
+   ```
+2. **Turn on Pages.** In the repo, go to **Settings → Pages → Build and deployment**, set Source to *Deploy from a branch*, and pick `master` and `/ (root)`.
+3. **Add DNS on WordPress.com.** Go to **Upgrades → Domains → geisert.me → DNS records → Add record** and add:
+   - Type `CNAME` · Name `portfolio` · Value `<your-github-username>.github.io`
 
-##### Prerequisites
+   This leaves geisert.me itself on WordPress. Only the `portfolio.` subdomain goes to GitHub.
+4. **Set the custom domain.** Back in **Settings → Pages**, enter `portfolio.geisert.me` as the custom domain (the `CNAME` file already contains it). Wait for the DNS check to pass, then tick **Enforce HTTPS**. The certificate can take up to an hour.
+5. **Optional: verify the domain.** To stop anyone else from claiming the subdomain, go to GitHub **Settings (your profile) → Pages → Add a domain** and add the TXT record it gives you on WordPress.com as well.
+6. **Update links.** Point the "Portfolio" link on geisert.me, and the URLs on LinkedIn and itch.io, to `https://portfolio.geisert.me`.
 
-First, install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
-[npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
+## Preview locally
 
-    npm install -g polymer-cli
-
-Second, install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
-
-    npm install -g bower
-
-##### Initialize project from template
-
-    mkdir my-app
-    cd my-app
-    polymer init starter-kit
-
-### Start the development server
-
-This command serves the app at `http://localhost:8080` and provides basic URL
-routing for the app:
-
-    polymer serve --open
-
-### Build
-
-This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates a service-worker.js file with code to pre-cache the
-dependencies based on the entrypoint and fragments specified in `polymer.json`.
-The minified files are output to the `build/unbundled` folder, and are suitable
-for serving from a HTTP/2+Push compatible server.
-
-In addition the command also creates a fallback `build/bundled` folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
-
-    polymer build
-
-### Preview the build
-
-This command serves the minified version of the app at `http://localhost:8080`
-in an unbundled state, as it would be served by a push-compatible server:
-
-    polymer serve build/unbundled
-
-This command serves the minified version of the app at `http://localhost:8080`
-generated using fragment bundling:
-
-    polymer serve build/bundled
-
-### Run tests
-
-This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
-against the browsers currently installed on your machine:
-
-    polymer test
-
-If running Windows you will need to set the following environment variables:
-
-- LAUNCHPAD_BROWSERS
-- LAUNCHPAD_CHROME
-
-Read More here [daffl/launchpad](https://github.com/daffl/launchpad#environment-variables-impacting-local-browsers-detection)
-
-### Adding a new view
-
-You can extend the app by adding more views that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections of the
-application. Each new demand-loaded fragment should be added to the list of
-`fragments` in the included `polymer.json` file. This will ensure those
-components and their dependencies are added to the list of pre-cached components
-and will be included in the `bundled` build.
+```
+python3 -m http.server 8000   # then open http://localhost:8000
+```

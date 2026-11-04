@@ -1,93 +1,130 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="Polymer Starter Kit">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Geisert · Game Designer &amp; UX Prototyper</title>
+<meta name="description" content="David Geisert: game designer and UX prototyper in London. 40+ games, AI-native play, Meta Reality Labs AR/VR prototyping, and host of the Jamference AI game jam.">
+<meta property="og:title" content="David Geisert · Game Designer & UX Prototyper">
+<meta property="og:description" content="Turning new AI capabilities into things people want to play.">
+<meta property="og:image" content="https://portfolio.geisert.me/assets/img/og.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="./">DG<span>.</span></a>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+  <div class="links">
+    <a href="#games">Games</a><a href="#jamference">Jamference</a><a href="#work">Work</a><a href="#products">AI Products</a><a href="#films">Films</a><a href="#about">About</a>
+    <a class="btn small" href="resume/David_Geisert_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </div>
+</nav>
 
-    <title>David Geisert Portfolio</title>
-    <meta name="description" content="David Geisert Portfolio, built on Polymer.">
+<header class="hero wrap">
+  <div class="hero-text">
+    <p class="eyebrow">Game designer · UX prototyper · London</p>
+    <h1>I turn new AI capabilities into things people <em>want to play.</em></h1>
+    <p class="sub">14 years making games and interactive systems: a $1M+ Quest launch title, five years prototyping AI and AR at Meta Reality Labs, 40+ released games, and a fortnightly AI game jam I run called <a href="#jamference">Jamference</a>.</p>
+    <div class="cta">
+      <a class="btn" href="#games">Play my games</a>
+      <a class="btn ghost" href="resume/David_Geisert_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <img src="assets/img/profile.jpg" data-fallback="https://dgeisert-portfolio.lovable.app/assets/profile-DqMNnW2W.jpeg" alt="David Geisert" class="avatar">
+    <dl class="stats">
+      <div><dt>40+</dt><dd>games shipped</dd></div>
+      <div><dt>200+</dt><dd>prototypes</dd></div>
+      <div><dt>$1M+</dt><dd>VR launch title</dd></div>
+      <div><dt>2</dt><dd>VR patents</dd></div>
+    </dl>
+  </div>
+</header>
 
-    <!--
-      If deploying to a non-root path, replace href="/" with the full path to the project root.
-      For example: href="/polymer-starter-kit/relative-path-example/"
-    -->
-    <base href="/">
+<section class="strip wrap" aria-label="Recognition"><div id="recognition" class="recog"></div></section>
 
-    <link rel="icon" href="images/favicon.ico">
+<section id="games" class="wrap">
+  <div class="sec-head">
+    <h2>Games</h2>
+    <p>Playable prototypes, jam games and shipped titles, many of them with AI as part of the mechanics.</p>
+  </div>
+  <div id="featured-games" class="grid featured"></div>
+  <h3 class="minor">More from the arcade</h3>
+  <div id="more-games" class="grid small-cards"></div>
+  <p class="more"><a href="https://dgeisert.itch.io" target="_blank" rel="noopener">See all 40+ games on itch.io →</a></p>
+</section>
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="manifest.json">
+<section id="jamference" class="wrap">
+  <div class="jam">
+    <div>
+      <p class="eyebrow">Creative facilitation</p>
+      <h2>Jamference</h2>
+      <p>I founded and host <b>Jamference</b>, a free, week-long game jam about making games <i>with</i> AI, out in the open. It runs every two weeks. I write each brief as a theme plus a mandatory design restriction, and set the rating rubric: <b>Fun, AI Use, Polish, Theme</b>. Entrants have to show which AI tools they used and what each one did, and I make a game every round too.</p>
+      <p>The restrictions are the point. Designing with "No Text" or "Movement Input Only" pushes people away from the obvious use of AI and towards ideas that are new.</p>
+      <div class="cta"><a class="btn" href="https://jamference.com" target="_blank" rel="noopener">jamference.com</a><a class="btn ghost" href="https://jamference.com/previous-jams.html" target="_blank" rel="noopener">Previous jams</a></div>
+    </div>
+    <ol class="jam-list">
+      <li><span>#1 · Oct 2026</span><b>Cat and Robot</b><i>Movement Input Only</i><small>My entry, Kitty Kingdom, was rated Most Fun</small></li>
+      <li><span>#2 · Oct 2026</span><b>Crafting</b><i>Playable on Mobile</i></li>
+      <li><span>#3 · Oct–Nov 2026</span><b>Great Works of Art</b><i>No Text</i><small>My entry: Starry Meows</small></li>
+    </ol>
+  </div>
+</section>
 
-    <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
+<section id="work" class="wrap">
+  <div class="sec-head">
+    <h2>Professional work</h2>
+    <p>Meta Reality Labs, Coinflip Studios and more: prototypes that shaped products, and products that shipped.</p>
+  </div>
+  <div id="pro" class="grid two"></div>
+</section>
 
-    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
+<section id="products" class="wrap">
+  <div class="sec-head">
+    <h2>AI products</h2>
+    <p>As founder of Story Machine AI, I design and build AI products end to end, with AI development tools and a small team.</p>
+  </div>
+  <div id="product" class="grid four"></div>
+</section>
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App">
+<section id="films" class="wrap">
+  <div class="sec-head">
+    <h2>AI films</h2>
+    <p>Experiments in AI filmmaking, from a 45-minute speed run to a feature with songs.</p>
+  </div>
+  <div id="film" class="grid four"></div>
+</section>
 
-    <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+<section id="about" class="wrap about">
+  <div>
+    <h2>About</h2>
+    <p>I started out as a game designer: product manager at Zynga, lead systems designer for a run of mobile hits at Rocket Games, then co-founder of the studio behind <a href="project.html?p=ninja-legends">Ninja Legends</a> on Quest. At Meta Reality Labs I spent five years as a product design prototyper (IC6), building AI and AR experiences for Orion glasses and Quest and taking them from idea to executive demo.</p>
+    <p>My process is to <b>get it playable fast, put it in front of players, and simplify ruthlessly</b>. I prototype in high fidelity from day one, because with today's tools fidelity is cheap and it brings out real problems earlier.</p>
+    <h3>Talks &amp; community</h3>
+    <ul class="ticks">
+      <li><b>Digital Champion of the Year 2026</b>, Camden Digital Inclusion, for AI talks and sessions for the Camden community.</li>
+      <li>Made a music video live on stage in a 5-minute speed run at AI Tinkerers Demopalooza, MongoDB.local London, and won the Multimodal AI category. <a href="https://www.linkedin.com/posts/dgeisert_story-machine-activity-7381691095761489920-B397" target="_blank" rel="noopener">Watch the result →</a></li>
+      <li>Ran the Reality Labs London demo fairs and grew them into Meta's 2nd-most-attended.</li>
+      <li>Admissions judge and mentor for StartX, Stanford's startup accelerator.</li>
+    </ul>
+  </div>
+  <aside class="contact">
+    <h3>Get in touch</h3>
+    <a href="mailto:dg@alumni.stanford.edu">dg@alumni.stanford.edu</a>
+    <a href="https://linkedin.com/in/dgeisert" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://dgeisert.itch.io" target="_blank" rel="noopener">itch.io</a>
+    <a href="https://www.youtube.com/channel/UCEsiDbUcRPLOxGqJgpoBZKg" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://geisert.me" target="_blank" rel="noopener">Blog · geisert.me</a>
+    <a class="btn" href="resume/David_Geisert_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+  </aside>
+</section>
 
-    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
-    <meta name="msapplication-tap-highlight" content="no">
+<footer class="wrap foot">© <span id="yr"></span> David Geisert · Built by hand, hosted on GitHub Pages</footer>
 
-    <script>
-      // Register the base URL
-      const baseUrl = document.querySelector('base').href;
-
-      // Load and register pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register(baseUrl + 'service-worker.js');
-        });
-      }
-    </script>
-
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-
-    <!-- Load your application shell -->
-    <link rel="import" href="src/my-app.html">
-    <link rel="import" href="bower_components/paper-button/paper-button.html">
-
-    <!-- Add any global styles for body, document, etc. -->
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
-        min-height: 100vh;
-        background-color: #eeeeee;
-      }
-    </style>
-  </head>
-  <body>
-    <my-app></my-app>
-    <noscript>
-      Please enable JavaScript to view this website.
-    </noscript>
-    <!-- Built with love using Polymer Starter Kit -->
-  </body>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
 </html>
