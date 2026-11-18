@@ -51,6 +51,7 @@ window.PORTFOLIO = {
       image: ITCH + "aW1nLzMxNjM0NjMzLmdpZg==/original/jxA%2FfC.gif",
       links: [
         { label: "Play on itch.io", url: "https://dgeisert.itch.io/starry-meows" },
+        { label: "Dev log", url: "https://dgeisert.itch.io/starry-meows/devlog/1789519/working-on-an-update" },
         { label: "Jam page", url: "https://itch.io/jam/jamference-ai-game-jam-hack-3" },
         { label: "Playthrough video", url: "https://youtu.be/lqWL0GZpnzE" }
       ],
@@ -167,6 +168,7 @@ window.PORTFOLIO = {
       image: "devlogs/kitty-kingdom/img/kitty-kingdom-cover.gif", fallback: ITCH + "aW1hZ2UvNTE3NDM1NC8zMTY2ODIzNS5naWY=/original/8xh44S.gif",
       links: [
         { label: "Play the full version", url: "https://dgeisert.itch.io/kittykingdom" },
+        { label: "Dev log", url: "https://dgeisert.itch.io/kittykingdom/devlog/1744370/from-jam-game-to-full-game" },
         { label: "Original jam entry", url: "https://dgeisert.itch.io/kitty-kingdom" },
         { label: "Jam results", url: "https://itch.io/jam/jamference-ai-game-jam-hack-1" }
       ],
@@ -247,6 +249,7 @@ window.PORTFOLIO = {
       image: "devlogs/london-overgrown/img/cover.gif",
       links: [
         { label: "Play on itch.io", url: "https://dgeisert.itch.io/london-overgrown" },
+        { label: "Dev log", url: "https://dgeisert.itch.io/london-overgrown/devlog/1789514/i-went-a-little-overboard-for-a-jam-game" },
         { label: "Jamference #4", url: "https://itch.io/jam/jamference-ai-game-jam-hack-4" }
       ],
       body: `
@@ -409,7 +412,10 @@ window.PORTFOLIO = {
       blurb: "Win over a royal court of AI agents by working out what each one wants, or lose your head to your rival Henry.",
       tags: ["LLM agents", "Social deduction", "Dialogue", "Unity"],
       image: "https://geisert.me/wp-content/uploads/2024/02/fnb5l_.png",
-      links: [{ label: "itch.io page", url: "https://dgeisert.itch.io/severed-heads-united-hearts" }],
+      links: [
+        { label: "itch.io page", url: "https://dgeisert.itch.io/severed-heads-united-hearts" },
+        { label: "Dev log", url: "https://dgeisert.itch.io/severed-heads-united-hearts/devlog/1789528/an-early-experiment-in-llms-in-gameplay" }
+      ],
       body: `
         <p class="lede">A fight for the throne played entirely in conversation. You chat freely with three AI courtiers, each with a private grudge against your rival Henry, and after every round they vote for one of you. Win the court and Henry loses his head. Lose it and you lose yours.</p>
         <p>It was my first game where an LLM <i>is</i> the mechanic rather than a content generator: there are no dialogue trees, and the only input is what you type. Built over a weekend in May 2023, about two months after GPT-3.5 Turbo came out. The AI service it ran on has since been switched off, so this page is the record of how it worked.</p>
@@ -483,7 +489,7 @@ window.PORTFOLIO = {
           <li><b>Show the agent's reasoning.</b> The one-line "why" on each vote did more for the player than anything else in the UI. When the AI is the opponent, its reasoning is the feedback.</li>
           <li><b>Keep the rules out of the model.</b> Let the LLM do the talking and the judging of tone, and let code own the score and the endings. The same split runs through <a href="project.html?p=hexagon-tactics">Hexagon Tactics</a>: generated flavour, authored systems.</li>
         </ul>
-        <p>The itch.io page is <a href="https://dgeisert.itch.io/severed-heads-united-hearts">still up</a>, but the AI behind the courtiers is no longer active, so they no longer reply and the game can't be played as it was. See also my other 2023 AI experiment, <a href="project.html?p=hexagon-tactics">Hexagon Tactics</a>, where AI generates the world, the hero and every card while you play.</p>`
+        <p>The itch.io page is <a href="https://dgeisert.itch.io/severed-heads-united-hearts">still up</a>, but the AI behind the courtiers is no longer active, so they no longer reply and the game can't be played as it was. The <a href="https://dgeisert.itch.io/severed-heads-united-hearts/devlog/1789528/an-early-experiment-in-llms-in-gameplay">dev log on itch.io</a> explains what changed. See also my other 2023 AI experiment, <a href="project.html?p=hexagon-tactics">Hexagon Tactics</a>, where AI generates the world, the hero and every card while you play.</p>`
     },
     {
       slug: "hexagon-tactics",
@@ -494,7 +500,8 @@ window.PORTFOLIO = {
       image: ITCH + "aW1hZ2UvMjE1NDY1Ni8xMjcwMjM4NS5wbmc=/original/jwbdMH.png",
       links: [
         { label: "Play on itch.io", url: "https://dgeisert.itch.io/hextactics" },
-        { label: "Jam results", url: "https://itch.io/jam/open-source-ai-game-jam/results" }
+        { label: "Jam results", url: "https://itch.io/jam/open-source-ai-game-jam/results" },
+        { label: "Dev log", url: "https://dgeisert.itch.io/hextactics/devlog/1789532/early-experiments-with-ai-image-and-text-generation-in-games" }
       ],
       body: `
         <p class="lede">You describe a world and a hero in a sentence or two. The game then writes your backstory, paints your character, names and draws every ability in your deck, and invents the enemies who live in your world. Beat them, and the arena <b>expands</b>: more hexes, a new card, and a harder wave.</p>
@@ -567,7 +574,7 @@ window.PORTFOLIO = {
           <li><b>Latency is a design problem, not just an engineering one.</b> The same lesson came back a year later on Meta's <a href="project.html?p=object-locking-ai">object-locking demo</a>, where we designed the wait instead of hiding it.</li>
           <li><b>Every generated game needs an offline mode.</b> Servers cost money and get switched off. Caching and a shipped default set are why this one is still playable.</li>
         </ul>
-        <p>Play it on <a href="https://dgeisert.itch.io/hextactics">itch.io</a> (the downloadable builds originally let you generate your own characters, worlds and enemies, but those services are no longer available, so it now plays with the pre-generated set), or see my other 2023 AI experiment, <a href="project.html?p=severed-heads-united-hearts">Severed Heads, United Hearts</a>, where LLM agents <i>are</i> the mechanic.</p>`
+        <p>Play it on <a href="https://dgeisert.itch.io/hextactics">itch.io</a> (the downloadable builds originally let you generate your own characters, worlds and enemies, but those services are no longer available, so it now plays with the pre-generated set; the <a href="https://dgeisert.itch.io/hextactics/devlog/1789532/early-experiments-with-ai-image-and-text-generation-in-games">dev log</a> explains what changed), or see my other 2023 AI experiment, <a href="project.html?p=severed-heads-united-hearts">Severed Heads, United Hearts</a>, where LLM agents <i>are</i> the mechanic.</p>`
     },
     {
       slug: "downriver", kind: "game", year: "2026",

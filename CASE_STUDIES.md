@@ -132,8 +132,8 @@ So every case study must make the **process** and the **AI workflow** explicit. 
 | Game | Case study (`data.js`) | Dev log HTML | Images | Talk track | Posted to itch |
 |---|---|---|---|---|---|
 | Kitty Kingdom | ☑ | ☑ | ☑ | ☑ | ☐ |
-| Severed Heads, United Hearts | ☑ | ☐ | ☑ | ☐ | ☐ |
-| Hexagon Tactics | ☑ | ☐ | ☑ | ☐ | ☐ |
+| Severed Heads, United Hearts | ☑ | ☑ | ☑ | ☐ | ☑ |
+| Hexagon Tactics | ☑ | ☑ | ☑ | ☐ | ☑ |
 | Starry Meows | ☑ | ☑ | ☑ | ☑ | ☐ |
 | Cursor Party | ☐ | ☐ | ☐ | ☐ | ☐ |
 | Flicksync | ☑ | ☐ | ☑ | ☐ | ☐ |

@@ -1,0 +1,31 @@
+<p><strong>A note on the state of Severed Heads, United Hearts: the AI courtiers are no longer active, so the game can't be played as it was.</strong> This post explains what's changed, and keeps a record of how the game worked for anyone who finds this page now.</p>
+
+<img src="https://portfolio.geisert.me/devlogs/severed-heads-united-hearts/img/title-court.jpg" alt="Painted royal court: a noblewoman in a red and gold gown faces a bearded nobleman, with other courtiers watching behind them">
+
+<h2>What's changed</h2>
+<p>Every courtier in the game is driven live by GPT-3.5 Turbo: there are no dialogue trees, and every reply, every decision to stay silent or walk out, and every vote comes back from the model as you play. The AI service the game was built on has since been switched off, so the courtiers no longer reply. The page will still load, but nothing you type gets an answer and the votes can't come in, so the game can't be finished.</p>
+<p>There's no offline version to fall back on. Unlike our other 2023 jam game, Hexagon Tactics, there was nothing to pre-generate here: the conversation <em>is</em> the game. Rather than take the page down, I'm leaving it up with this note so the jam entry, the art and the write-up stay on record.</p>
+
+<h2>What it was</h2>
+<p>We made it over a weekend in May 2023 for Mini Jam 132 (theme <strong>Severed</strong>, restriction <strong>Multiple Endings</strong>), about two months after GPT-3.5 Turbo came out. It was a fight for the throne played entirely in conversation:</p>
+<ul>
+  <li><strong>Three rounds of 90 seconds.</strong> You chat freely with three courtiers, each with a one-line public hint hiding a private grudge against your rival Henry. Your job is to find the grievance and use it.</li>
+  <li><strong>A vote after every round.</strong> Each courtier scores you against Henry from 0 to 10 (5 was forbidden, so nobody could sit on the fence) and explains why in one sentence. That reasoning was the player's main feedback.</li>
+  <li><strong>Memory and real moves.</strong> Courtiers remembered everything you'd said that game, and could choose to speak, stay silent or end the conversation.</li>
+  <li><strong>Endings decided by code, not the model.</strong> The share of the court on your side picked the ending, from a public execution to a long and well-loved reign.</li>
+</ul>
+
+<img src="https://portfolio.geisert.me/devlogs/severed-heads-united-hearts/img/ending-crowned.jpg" alt="A smiling crowned couple surrounded by happy, well-dressed friends">
+<p><em>The best ending: the whole court backs you, and Henry quietly loses his head.</em></p>
+
+<h2>What I took from it</h2>
+<ul>
+  <li><strong>Agents need goals, not just personalities.</strong> Our courtiers knew who they were but not what they wanted from the next ruler, so being pleasant was usually the best tactic.</li>
+  <li><strong>Show the agent's reasoning.</strong> The one-line "why" on each vote did more for players than anything else in the UI.</li>
+  <li><strong>Keep the rules out of the model.</strong> Let the LLM talk; let code own the score and the endings.</li>
+  <li><strong>Plan for the servers going off.</strong> A game that depends on a live AI service has a shelf life unless someone keeps paying for and maintaining it. That's now one of the first questions I ask before putting live AI in a game.</li>
+</ul>
+
+<h2>Read more</h2>
+<p>The full case study, with the design decisions, what went wrong and how I'd rebuild it today, is on my portfolio: <a href="https://portfolio.geisert.me/project.html?p=severed-heads-united-hearts">Severed Heads, United Hearts</a>. For an AI game from the same summer that still plays offline, try <a href="https://dgeisert.itch.io/hextactics">Hexagon Tactics</a>.</p>
+<p>Thanks to everyone who played and rated it during the jam, and to Xiaomeng Zhang, who built the agent layer with me.</p>

@@ -1,0 +1,25 @@
+<p><strong>A note on the downloadable builds of Hexagon Tactics: real-time generation no longer works.</strong> The game is still fully playable, but it now uses the pre-generated fire-witch world instead of creating your own. Here's what changed and why.</p>
+
+<img src="https://portfolio.geisert.me/devlogs/hexagon-tactics/img/generated-cast.jpg" alt="Nine generated character portraits in an anime style: a fire princess, a white snow cat, a fighter jet, a wolf-riding ranger, a blue ogre, an armoured knight, a hunter with a staff, a horned green beast and a dark armoured boss">
+
+<h2>What's changed</h2>
+<p>The Windows and Mac downloads originally let you describe your own world and hero, then generated everything live while you played: your backstory, your portrait, every card's name and picture, and the enemies who live in your world. That relied on several online services we ran for the jam:</p>
+<ul>
+  <li><strong>Falcon-7B-Instruct</strong> on a Hugging Face inference endpoint for names, backstories and descriptions, with GPT-3.5 as a fallback.</li>
+  <li><strong>Stable Diffusion 1.5</strong> on a rented GPU server for every character and card image.</li>
+  <li>Background removal, and text-to-speech for voices.</li>
+</ul>
+<p>Those services are no longer running, so character creation and live generation in the downloadable builds don't work any more. If you try to create a new world, the generation calls won't come back.</p>
+
+<h2>What still works</h2>
+<p>Near the jam deadline we shipped a complete pre-generated set with the game, so it would keep working when the servers were off. That set is what you'll play now: the fire-witch hero, her full deck of 24 cards and all eight enemy types, with their art and descriptions. The tactics are unchanged: the 5-Power turns, the expanding hex arena, the card picks between waves and the climb to the 500 HP boss.</p>
+
+<img src="https://portfolio.geisert.me/devlogs/hexagon-tactics/img/generated-ability-cards.jpg" alt="Grid of 24 generated card illustrations of a fire witch, each labelled with the name the LLM gave it, such as Flame Wreath, Fireball Frenzy and Pyre's Inferno">
+<p><em>The pre-generated deck you'll play with now.</em></p>
+
+<h2>Why not keep it running?</h2>
+<p>Hosting a language model and a GPU for image generation costs money every hour they're on, and the 2023 models and endpoints we built on have moved on. Keeping them alive for a jam game wasn't sustainable. One player put it best after we turned the servers off: <em>"Oh... I so wish I could generate my characters and such, what a shame."</em> I agree, and it's the clearest lesson I took from the project: <strong>every generated game needs an offline mode.</strong> The caching and the shipped default set are the only reason this one is still playable.</p>
+
+<h2>Could it come back?</h2>
+<p>Possibly. Today's image models generate in about a second and structured output would fix a lot of the rough edges (like the "fast moving fighter" that became an F-16). If I rebuild it, I'll write about it here. In the meantime, the full story of how the pipeline worked, what went wrong and how I'd do it now is on my portfolio: <a href="https://portfolio.geisert.me/project.html?p=hexagon-tactics">Hexagon Tactics: The Expanding Arena</a>.</p>
+<p>Thanks to everyone who played and rated it in Hugging Face's Open Source AI Game Jam, where it placed 7th of 82 and 4th for Fun, and to Xiaomeng Zhang, who built the character creation and enemy info generation with me.</p>
