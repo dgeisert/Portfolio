@@ -28,27 +28,15 @@
     return rows.filter((r) => r[1]).map((r) => `<div><dt>${r[0]}</dt><dd>${esc(r[1])}</dd></div>`).join("");
   };
 
-  function caseRow(p) {
-    const h = href(p);
-    return `<article class="case">
-      <a class="case-media" href="${h}" tabindex="-1" aria-hidden="true">${media(p)}</a>
-      <div class="case-body">
-        <p class="case-meta"><span>${esc(p.company || KIND[p.kind])}</span><span>${esc(p.year)}</span></p>
-        <h3><a href="${h}">${esc(p.title)}</a></h3>
-        <p class="case-blurb">${esc(p.blurb)}</p>
-        <dl class="facts">${facts(p)}</dl>
-        <a class="go" href="${h}" tabindex="-1" aria-hidden="true">Read the case study <span>→</span></a>
-      </div>
-    </article>`;
-  }
 
-  function card(p) {
+  function card(p, withCo) {
     const h = href(p);
+    const meta = `<span class="meta">${withCo && p.company ? esc(p.company) + " · " : ""}${esc(p.year)}</span>`;
     if (p.kind === "film") {
       return `<article class="card film">${media(p)}<div class="body"><div class="badges"><span class="meta">${esc(p.year)}</span>${pill(p)}</div><h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p></div></article>`;
     }
     const inner = `${media(p)}<div class="body">
-      <div class="badges"><span class="meta">${esc(p.year)}</span>${pill(p)}</div>
+      <div class="badges">${meta}${pill(p)}</div>
       <h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p>
       <ul class="tags" aria-label="Tags">${tags(p, 3)}</ul>
       ${h ? `<span class="go">${goLabel(p, h)}</span>` : ""}</div>`;
@@ -63,22 +51,17 @@
       <span class="mini-meta">${esc(p.year)} ${arrow(h)}</span></a>`;
   }
 
-  function wide(p) {
-    const h = href(p);
-    return `<a class="wide" href="${h}"${tgt(h)}>
-      <span class="thumb">${media(p)}</span>
-      <span class="wide-text"><small>Also at ${esc(p.company)} · ${esc(p.year)}</small><b>${esc(p.title)}</b><span>${esc(p.blurb)}</span></span>
-      <span class="go">Case study →</span></a>`;
-  }
 
   const fill = (sel, list, fn) => { const el = $(sel); if (el) el.innerHTML = list.map(fn).join(""); };
 
   // ---------- home ----------
   if ($("#cases")) {
     const P = D.projects;
-    fill("#cases", P.filter(isCase).sort((a, b) => a.caseOrder - b.caseOrder), caseRow);
-    fill("#more-pro", P.filter((p) => p.kind === "pro" && !isCase(p)), wide);
-    fill("#featured-games", P.filter((p) => p.kind === "game" && p.featured && !isCase(p)), card);
+    // one group: ranked case studies, then other pro work, then featured games
+    const cases = P.filter(isCase).sort((a, b) => a.caseOrder - b.caseOrder)
+      .concat(P.filter((p) => p.kind === "pro" && !isCase(p)))
+      .concat(P.filter((p) => p.kind === "game" && p.featured && !isCase(p)));
+    fill("#cases", cases, (p) => card(p, true));
     fill("#more-games", P.filter((p) => p.kind === "game" && !p.featured), mini);
     fill("#product", P.filter((p) => p.kind === "product" && !isCase(p)), card);
     fill("#film", P.filter((p) => p.kind === "film"), card);
@@ -98,7 +81,7 @@
       el.innerHTML = `<p class="eyebrow">Not found</p><h1>That project doesn’t exist.</h1><div class="cta"><a class="btn" href="./">Back to the portfolio</a></div>`;
     } else {
       document.title = `${p.title} · David Geisert`;
-      const sec = isCase(p) ? ["work", "case studies"] : p.kind === "game" ? ["games", "games"] : p.kind === "pro" ? ["work", "work"] : ["founder", "products & films"];
+      const sec = isCase(p) || ((p.kind === "game" || p.kind === "pro") && p.body) ? ["work", "case studies"] : p.kind === "game" ? ["games", "games"] : ["founder", "products & films"];
       const links = (p.links || []).map((l, i) => `<a class="btn ${i ? "ghost" : ""}" href="${l.url}"${tgt(l.url)}>${esc(l.label)} ${ext(l.url) ? '<span aria-hidden="true">↗</span>' : ""}</a>`).join("");
       // reading order: case studies, then other work, then games
       const order = D.projects.filter((x) => x.body).sort((a, b) => rank(a) - rank(b));
@@ -140,6 +123,20 @@
   }
   document.addEventListener("error", (e) => { if (e.target.tagName === "IMG") broken(e.target); }, true);
   $$("img").forEach((img) => { if (img.complete && !img.naturalWidth && img.src) broken(img); });
+
+  // ---------- image carousels in case-study bodies ----------
+  $$(".carousel").forEach((c) => {
+    const track = c.querySelector(".carousel-track"), slides = c.querySelectorAll(".slide");
+    const prev = c.querySelector(".carousel-prev"), next = c.querySelector(".carousel-next"), count = c.querySelector(".carousel-count");
+    const index = () => Math.round(track.scrollLeft / (slides[0].offsetWidth + 12));
+    const go = (i) => track.scrollTo({ left: slides[Math.max(0, Math.min(slides.length - 1, i))].offsetLeft - slides[0].offsetLeft, behavior: "smooth" });
+    const update = () => { const i = index(); count.textContent = `${i + 1} / ${slides.length}`; prev.disabled = i === 0; next.disabled = i === slides.length - 1; };
+    prev.addEventListener("click", () => go(index() - 1));
+    next.addEventListener("click", () => go(index() + 1));
+    track.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") { e.preventDefault(); go(index() - 1); } if (e.key === "ArrowRight") { e.preventDefault(); go(index() + 1); } });
+    track.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+    update();
+  });
 
   // ---------- lightweight YouTube embeds ----------
   document.addEventListener("click", (e) => {

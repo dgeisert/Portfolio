@@ -1,0 +1,120 @@
+<p><strong>How Starry Meows, 1st overall at Jamference #3, was made: a Van Gogh platformer built from about 600,000 moving brush strokes, directed in 56 written prompts to an AI agent, from a two-day jam entry to a 20-painting gallery.</strong></p>
+
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/starry-meows-cover.gif" alt="The orange cat sits on a floating island above the painted village while the sky swirls behind the Starry Meows title"></p>
+
+<p>Starry Meows started as my entry to <a href="https://itch.io/jam/jamference-ai-game-jam-hack-3">Jamference #3</a>, the AI game jam I run. The theme was <strong>Great Works of Art</strong> and the restriction was <strong>No Text</strong>. I wanted to know what it would feel like to run around <em>inside</em> The Starry Night, as a small orange cat, catching the stars out of the sky.</p>
+
+<p>The short version for hiring managers is on my portfolio: <a href="https://portfolio.geisert.me/project.html?p=starry-meows">Starry Meows case study</a>. This is the long version.</p>
+
+<iframe width="100%" height="480" src="https://www.youtube.com/embed/lqWL0GZpnzE" frameborder="0" allowfullscreen></iframe>
+
+<h2>The setup</h2>
+<ul>
+<li><strong>Time:</strong> the jam version took two days (30–31 October 2026) and 34 prompts. That includes the itch page art and the first dev log.</li>
+<li><strong>Who did what:</strong> I did the design, art direction, playtesting and music. Claude, running as an agent in the Claude desktop app, wrote every line of code: the renderer, the cat, the levels, the camera, the sound effects and the documentation.</li>
+<li><strong>Tech:</strong> Three.js in the browser, 960x640 reference resolution, built into one HTML file.</li>
+<li><strong>The rule I set on day one:</strong> save every prompt word for word and take screenshots at every step, and never overwrite them. That's why I can show you the dead ends below.</li>
+</ul>
+
+<h2>Step 1: the look</h2>
+<p>My first prompt asked for a 3D platformer in the style of The Starry Night where every object is a simple base shape covered in brush-stroke particles, a cat in the same style, Mario-style controls, and stars to collect. I ended it with "iterate on the appearance until you are satisfied that it looks like Van Gogh's Starry Night".</p>
+<p>How the look works:</p>
+<ul>
+<li><strong>Base mesh:</strong> a streaky painted shader with cool blue shadows instead of black ones.</li>
+<li><strong>Brush strokes:</strong> tens of thousands of small textured ribbons per scene, each with its own paint direction. Hills follow their contour lines, cypresses curl upward like flames, walls are vertical, the cat's fur runs nose to tail.</li>
+<li><strong>The sky:</strong> strokes follow the contour lines of a flow field with a vortex at every star. That's what gives the rolling swirls and the rings around the stars.</li>
+<li><strong>Outlines and post:</strong> dark prussian-blue contour lines, then canvas grain and a blue vignette.</li>
+</ul>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/first-render.jpg" alt="First render: a swirling sky, but the ground is orange and blue confetti and the cat is a dark blob"></p>
+<p><em>First render. The sky already worked. The ground looked like orange and blue confetti, the cat was a dark blob, and the area under the horizon was a flat navy void.</em></p>
+<p>The agent went through eight passes on its own, checking each one with headless screenshots. One pass it hid every stroke to prove the base layer was fine, then counted colours per mesh and found the orange "confetti" was just 2% of strokes, all ochre accents near the camera.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/first-day-final.jpg" alt="The village after eight passes: hills on the horizon, lit windows, a moonlit cat and painted stars"></p>
+<p><em>After eight passes: outlines, rolling hills across the horizon like the painting, and stars rebuilt as concentric painted rings (the first version had sun rays, which looked too graphic).</em></p>
+
+<h2>Step 2: critique</h2>
+<p>From here my job was playing each build and writing back what was wrong, in plain language. Some of my notes:</p>
+<blockquote><p>the cat should be cat sized compared to the buildings, and there should be a much larger area to move around</p></blockquote>
+<blockquote><p>Make the cat an orange tabby. All the particles should move slightly, but only the sky should move quickly.</p></blockquote>
+<blockquote><p>Make the jump a little more floaty, especially while holding the spacebar.</p></blockquote>
+<p>The cat went from a moonlit blue shape to an orange tabby with a cream belly and green eyes, which finally made it pop against all that blue.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/orange-tabby-closeup.jpg" alt="Close-up of the orange tabby cat made of brush strokes"></p>
+
+<h2>Step 3: the platforming</h2>
+<p>I asked for an analysis of the platforming in Mario 64, Galaxy, 3D World and Wonder, and for that analysis to shape the levels. It came back with the four-beat structure Nintendo uses (introduce, develop, twist, test) and built seven short courses on it: sunflowers that bounce you, alternating "beat" blocks, crumbling clouds, a pinwheel, launch swirls, a firefly hunt, and a Wonder sunflower on the church roof.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/mario-courses-contact-sheet.jpg" alt="Contact sheet of the seven courses: sunflowers, beat blocks, clouds, pinwheel and more"></p>
+<p>Then came three longer puzzles: paint-pot switches that build bridges between rooftops, a windmill spiral, and a Moon Road up to the crescent moon. One rule I set: <strong>puzzles never make you restart</strong>. Switches and bridges stay built, misses drop you onto an earlier part of the same puzzle, and lanterns are checkpoints with a colour-matched swirl in the plaza that takes you back up.</p>
+
+<h2>Step 4: No Text</h2>
+<p>The restriction was the most interesting part of the design. Everything a text tutorial would say had to come from the world:</p>
+<ul>
+<li><strong>A painted keyboard</strong> that only advances when you press the lit key: forward, left, back, right, rotate left and right, then Shift plus forward, jump, and click to dive. Finished keys turn gold, and a row of dots shows progress.</li>
+<li><strong>A guide arrow</strong> over the cat's head pointing to the first star. The first version was a 3D arrow that was unreadable from the follow camera; the fix was to make it face the screen.</li>
+<li><strong>The camera</strong> turns to whatever you just activated for two seconds, so you see the bridge you just built.</li>
+<li><strong>A sound for every interaction:</strong> more than 30 sound effects, all synthesized live in code, no audio files.</li>
+<li><strong>Progress</strong> is a row of painted stars. The settings menu is a gear, a music note and a speaker. The firefly timer is a ring of brush strokes that burns down.</li>
+</ul>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/no-text-tutorial-sequence.jpg" alt="Four frames of the painted controls tutorial: keycaps light up in turn and turn gold once pressed"></p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/no-text-settings-menu.jpg" alt="The settings menu: painted controls layout with music and sound sliders and no words"></p>
+<p>An honest bug: the click step of the tutorial never advanced at first. The click flag was cleared every frame while the step also wanted a short hold. Clicks now count instantly.</p>
+
+<h2>Step 5: tuning feel</h2>
+<p>This is where I had to be most hands-on. A few examples:</p>
+<ul>
+<li><strong>Camera.</strong> When the cat went behind a house, the camera zoomed right up to it at over 100 m/s. I asked it to find a better angle instead. It now tries 28 positions left, right and up, looking half a second ahead, and only zooms in slowly if none is clear. A test walking the cat around ten house corners showed the cat hidden in 5.5% of frames before and 0% after. I also halved how fast it turns back behind the cat.</li>
+<li><strong>The firefly hunt.</strong> 80 seconds was far too generous. I cut it to 30% (24 s), then added 1 second, then 3 more. A bot speed-run checks that a near-perfect run still makes it.</li>
+<li><strong>Falling through the floor.</strong> On high drops the cat sometimes fell through the ground. A drop test found 379 of 810 drops failed. After the fix: 0 of 810.</li>
+</ul>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/camera-occlusion-corner.jpg" alt="Four frames of the camera swinging around a house corner to keep the cat in view"></p>
+<p>The jam version finished with a 7.5 second fly-in over the island, a title card made of particles (the one piece of text the rules allowed), and a six-shot finale with brush-stroke fireworks when you catch the last star.</p>
+
+<h2>Results</h2>
+<p>Entrants rate each other's games on Fun, Use of AI, Polish and Theme. Out of 27 entries and 222 ratings, Starry Meows came <strong>1st overall</strong> (4.229), and won <strong>Use of AI</strong> and <strong>Polish</strong>. It was 2nd for Theme and 3rd for Fun.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/jamference-3-results.png" alt="Jamference #3 results: Starry Meows 1st overall with 4.229, also winning Use of AI and Polish"></p>
+<p>Fun being its lowest placing told me where to look next. The art pulls you in, but the platforming still had rough edges, so most of the post-jam work went there first.</p>
+
+<h2>After the jam: a gallery of paintings</h2>
+<p>A week later I added mouse look and ledge assists (the cat teeters at the edge instead of walking off, and near-miss jumps get pulled onto the ledge). Then I went much bigger: a gallery overworld inspired by the V&amp;A, with 20 paintings you jump into, Mario 64 style. Outside the jam, text was allowed again, so the gallery has painted serif panels for the tutorial, painting cards and room names.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/gallery-painting-card.jpg" alt="The cat stands in front of a painting in the gallery and a card shows the world's stars"></p>
+<p>The first pass gave each world its own palette, stroke shape and post effect. But every world shared the same course layouts, and it showed:</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/worlds-before-shared-templates.jpg" alt="Contact sheet of 20 worlds in the first pass, each a recoloured version of the same layout"></p>
+<p>My feedback was long and specific. A few lines:</p>
+<blockquote><p>The monet lily pond level should be across lots of lilies with a bridge like in the monet paintings, so the whole level is a big lake with lilies that the player must jump between.</p></blockquote>
+<blockquote><p>The escher level should be a self contained level where the staircases loop back on themselves and change the direction of gravity like in an escher drawing.</p></blockquote>
+<blockquote><p>The colors are way off for the scream, and make the elements feel a lot more like the contents of the painting.</p></blockquote>
+<p>I also asked it to find a reference for every style first, and to tell me if it couldn't get one. Each style got its own surface shader: hatching that "boils" between three drawings a second for the sketch worlds (with no particles at all), dots, flat cut paper, mosaic, cubist shards, ink wash, woodblock, drips, palette knife. The first cubist shader used a Voronoi pattern and looked like crazy paving, so it was replaced by planes cut with straight lines.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/painting-worlds-latest.jpg" alt="All 20 painting worlds as they are now, each built around objects from its pictures"></p>
+<p>Then the levels became the pictures themselves: the drawings world is one giant flying machine, the cubist world a giant guitar, the Escher world a hall where every wall has its own gravity.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/davinci-ornithopter.jpg" alt="A giant sepia-sketched flying machine seen from above"></p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/cubist-guitar.jpg" alt="A giant cubist guitar floating among faceted shards"></p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/escher-gravity-house.jpg" alt="Black and white hatched hall with stairs and doors on several walls"></p>
+<p>Two rules came out of this: the game names styles and media, not artists, and for artists still in copyright every level is an original composition built from their recurring motifs, never a copy.</p>
+<p>The gallery is now walked in order through eight numbered rooms, with a red runner on the floor, and The Starry Night is the last painting.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/gallery-rotunda.jpg" alt="The gallery rotunda with a gold mosaic floor and red and white columns"></p>
+
+<h2>The wave I said no to four times</h2>
+<p>The woodblock wave took the most art direction. I asked it to break toward the start and to make the foam more 3D, with three iterations. Then I asked for three very different options side by side: paper cut-out, sculpted scrolls and spray.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/great-wave-rejected-options.jpg" alt="Four versions of the wave's foam: heaps, paper cut-out, sculpted scrolls and spray"></p>
+<blockquote><p>I don't like any of those. Instead try a set of fractal triangles coming out of the top. They should fully overlap at the top of the wave.</p></blockquote>
+<p>That one worked. One more note (larger triangles, remove the bottom two rows) and it was done.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/starry-meows/img/great-wave-fractal-foam.jpg" alt="The final wave: white fractal triangle claws along a dark blue crest"></p>
+
+<h2>Keeping it playable</h2>
+<p>Bigger levels brought two problems. Performance: one rainy lamp-lit street was making 14,000 draw calls. Batching into 80 m cells, culling by distance and merging by colour brought it to about 200, roughly 20 times faster. And reachability: bots now walk every hop of every course in every world after each change, so a new piece of scenery can't quietly make a star impossible.</p>
+
+<h2>What I learned</h2>
+<ul>
+<li><strong>Iteration is key.</strong> Trying the game many times and giving specific feedback and feature requests helped shape the game into a good experience.</li>
+<li><strong>Specific critique beats general praise.</strong> "Make it better" did little. "The colours are way off for The Scream" fixed it.</li>
+<li><strong>Ask for options, be ready to reject them all.</strong></li>
+<li><strong>Feel is still a human job.</strong> The AI was fast at rendering, systems and variations. Camera speed, jump float, timer length and the first thirty seconds all needed me playing it.</li>
+<li><strong>Give references and targets.</strong> Once the agent has a visual target in Van Gogh's Starry Night, it can look at the outputs and check and revise on its own.</li>
+</ul>
+
+<h2>Links</h2>
+<ul>
+<li><a href="https://dgeisert.itch.io/starry-meows">Play Starry Meows</a></li>
+<li><a href="https://itch.io/jam/jamference-ai-game-jam-hack-3">Jamference #3 jam page</a></li>
+<li><a href="https://portfolio.geisert.me/project.html?p=starry-meows">Portfolio case study</a></li>
+<li><a href="https://portfolio.geisert.me/project.html?p=jamference">About Jamference</a></li>
+<li>My other Jamference games: <a href="https://portfolio.geisert.me/project.html?p=kitty-kingdom">Kitty Kingdom</a> (#1, Most Fun) and <a href="https://portfolio.geisert.me/project.html?p=london-overgrown">London Overgrown</a> (#4)</li>
+</ul>

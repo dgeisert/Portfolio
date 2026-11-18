@@ -1,0 +1,136 @@
+<p><strong>How Kitty Kingdom went from a one-week jam entry to an 18-land roguelite in a month, with Claude writing the code and drawing the art, Suno making the music, and a robot autoplayer balancing a game about robots. This is the behind-the-scenes post: the process, the AI workflow, and the calls the AI couldn't make.</strong></p>
+
+<p><em>Prefer the short version? The case study is on my portfolio: <a href="https://portfolio.geisert.me/project.html?p=kitty-kingdom">portfolio.geisert.me/project.html?p=kitty-kingdom</a>.</em></p>
+
+<hr>
+
+<h2>1. The brief: Movement Input Only</h2>
+
+<p>Kitty Kingdom started as my entry to <a href="https://itch.io/jam/jamference-ai-game-jam-hack-1">Jamference #1</a>, the AI game jam I run. The theme was <strong>Cat and Robot</strong>, it ran for one week (2 to 9 October 2026), and there was one mandatory rule: <strong>Movement Input Only</strong>. No attack button, no clickable menus, nothing but moving.</p>
+
+<p>A restriction like that kills most ideas immediately, which is the point. The question I kept coming back to was: <em>if moving is the only verb, what can moving mean?</em> The answer was position. In a defence game, where you build is the decision, so I made standing still the way you build.</p>
+
+<p>You play King Whiskers. Walk to a glowing spot and stand still to build there. Stand on a numbered circle to pick an upgrade. Stand on the Night Bell to call in the robots. That was the entire interface.</p>
+
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/jam-build-gameplay.gif" alt="The jam build: King Whiskers walks along dirt roads between cottages and towers while robots approach the castle."></p>
+
+<h2>2. What players said</h2>
+
+<p>Out of 37 entries, rated by the other entrants, Kitty Kingdom was voted <strong>Most Fun (4.43)</strong>, <strong>#4 overall</strong> and #3 for Use of AI.</p>
+
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/jamference-1-results.jpg" alt="Jamference #1 results card: 37 entries, 349 ratings, Kitty Kingdom #4 overall and Most Fun at 4.43."></p>
+
+<p>The comments were kind, and more usefully they agreed with each other:</p>
+<ul>
+<li><strong>It was too long.</strong> 100 nights in one sitting is a lot.</li>
+<li><strong>Standing on circles to choose was limiting.</strong> It capped how many choices I could offer and made the dialogue awkward.</li>
+<li><strong>"I'd like to see it without the movement-only hindrance."</strong></li>
+<li>Requests: separate music and sound volume, zoom, clearer upgrade status, more music, a Mac build.</li>
+</ul>
+
+<p>Nobody complained about the loop itself: build by day, defend by night, pick upgrades as you go. So that was the part I kept. Everything around it was up for grabs.</p>
+
+<h2>3. Research before redesign</h2>
+
+<p>Before changing anything, I had Claude write up ten games in the same space (Thronefall, Rogue Tower, Against the Storm, Loop Hero, They Are Billions, The Last Spell, Mindustry, Magicraft, Dungeon Settlers and a one-page overview), and I took learnings and the best systems from each: Thronefall's walking builder, Loop Hero's adjacency, Against the Storm's blueprint draft. Just as useful were the complaints that kept recurring across games, because those are the traps.</p>
+
+<p>Five of them became design rules for Kitty Kingdom:</p>
+<ol>
+<li><strong>Show the threat before it arrives.</strong> Every well-reviewed game previews danger. So the game got a Tonight panel listing each robot, where it's coming from and what it resists.</li>
+<li><strong>Keep runs short and save often.</strong> The most common structural complaint was runs that drag. So battles got shorter and the game saves every dawn.</li>
+<li><strong>Draft with control, not pure luck.</strong> Players called one competitor's 400-card random draw "a slot machine". So drafts got rerolls and a deck you curate.</li>
+<li><strong>Meta-progression should widen choices, not inflate stats.</strong> So unlocks are mostly new cards, buildings and heroes, not +5% damage.</li>
+<li><strong>Avoid one-mistake run losses.</strong> So if the Castle falls you can rewind to that morning.</li>
+</ol>
+
+<h2>4. The campaign build</h2>
+
+<p>The first campaign build went in on 14 October, five days after the jam closed. After that I shipped almost every day for three weeks. The cadence was simple: play in the evening, write down what felt wrong, describe the change to Claude in the morning, play it by lunch.</p>
+
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/jam-vs-campaign.jpg" alt="Side by side: the jam build on 9 October and the campaign build on 22 October, now on a hex grid with a resource bar and a Tonight panel."></p>
+
+<h3>Keep the walk, drop the restriction</h3>
+<p>Players asked for the game without movement-only, and they were right. But the restriction had created something worth keeping: the hero physically walks to where things get built. So I dropped the rule and kept the walk. You still walk to a hex to build, and one button (Space, A, or a tap) opens the build menu there. I considered click-to-build anywhere, but that's every other tower-defence game.</p>
+
+<h3>Adjacency is the puzzle</h3>
+<p>With a hex grid, position could carry even more weight. Logging Camps earn per neighbouring forest, Quarries per rock, Farms per open field, Cottages per neighbouring Cottage. Enchanters give their element to the towers next to them, so an Ice Enchanter beside an Archer Tower means ice arrows.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/adjacency-neighbours-matter.gif" alt="Animated: buildings beside forests, rocks and other cottages earn bonus resources at dawn."></p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/day-walk-and-build.gif" alt="The hero walks across the hex map during the day and builds."></p>
+
+<h3>Your deck decides what you can build</h3>
+<p>In the jam build every building was available from day one, so the best plan tended to be the same every time. Now a small core is always there, and everything else is one of 80 cards. After every night you draft 1 card from 3. The draft never offers a blueprint you can't use yet, and it leans towards upgrades for buildings you've already built. A small deck is predictable; a big one gives options but less control. That trade-off is the run-to-run variety the jam build lacked.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/drafting-cards.gif" alt="Animated: after a night, three cards are offered and one is picked."></p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/deck-workshop.png" alt="The Deck screen and Card Workshop, with cards in five colour-coded families."></p>
+
+<h3>A campaign instead of a marathon</h3>
+<p>The single 100-night map became the Purrlands, a continent of lands that get harder from west to east. Win a land and the Grime pulls back from its neighbours. The first land is 6 nights; the final one, the Dust Citadel, is 30.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/purrlands-campaign-map.gif" alt="The Purrlands campaign map, with claimed lands in colour and unclaimed lands under purple Grime."></p>
+
+<h2>5. How the AI work actually split</h2>
+
+<p>I get asked this a lot, so here is the honest split.</p>
+
+<h3>Claude: code</h3>
+<p>Claude wrote the entire game in plain JavaScript, with no engine. That includes the hex battle simulation, pathfinding, the campaign, the Town, gamepad support, the Electron builds for Windows, Mac and Steam Deck, and anonymous telemetry. My input was design notes, bug reports from playing, and a lot of "this doesn't feel right, here's why".</p>
+
+<h3>Claude: art, drawn in code</h3>
+<p>There's no image-generation model in Kitty Kingdom. Every cat, robot, building and tile is drawn by canvas code Claude wrote. That was a deliberate choice: code-drawn art animates for free, recolours for elites and Grime, stays consistent across 80 cards and 35-plus robot types, and changes in seconds when I want something different.</p>
+<p>It also changed what art direction meant. Instead of prompting for one image, I asked for <strong>option sheets</strong>: the same thing drawn several ways, side by side, so I could choose.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/icon-options-contact-sheet.png" alt="Ten app-icon concepts for Kitty Kingdom: crowned cat, cat castle, cat versus robot, paw crest, cat in a gear, night watch, king on a robot vacuum, tower diorama, cat knight and a KK monogram."></p>
+<p>The same approach fixed a real usability problem. Under the Grime, blocked hexes and walkable hexes looked the same, so players walked into walls. Claude drew three fixes on the same map:</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/grime-readability-options.jpg" alt="The same map four ways: today, with blocked and walkable hexes alike; option A, blocked hexes darker; option B, an outline around walkable areas; option C, dashed outlines on walkable hexes."></p>
+<p>And the map edges, which originally just stopped in flat blue:</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/map-border-options.jpg" alt="A grid comparing map-edge treatments across meadow, tundra and wasteland: the current flat sea, a living sea, a floating sky island, and a misty wildwood."></p>
+<p>Some passes were plain before-and-after polish. Walls got proper towers and joins:</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/walls-before-after.jpg" alt="Before and after: palisades, stone walls and hedges, with the after version adding towers, flags and cleaner joins."></p>
+<p>And scattered rocks and trees became connected clusters, so you can read the terrain at a glance:</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/terrain-before-after.jpg" alt="Before and after on two maps: scattered single rocks and trees, then connected clusters of rocks and forest with a shared outline."></p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/redrawn-buildings.png" alt="A sheet of redrawn buildings: masonry, observatory, granary, forge, alchemist, library, cottages, beacon, war drums, enchanter pedestals and a sawmill."></p>
+
+<h3>Suno: music</h3>
+<p>The four recorded tracks (main menu, campaign map, day phase, night battle) were made in Suno. Underneath them, the game also has a full generated score in WebAudio code, one piece per scene, which plays if a track is missing.</p>
+
+<h3>An AI that plays the game</h3>
+<p>With 18 lands of up to 30 nights each, there's no way to balance by hand. So the game includes a <strong>headless autoplayer</strong>. It builds an economy, places towers along the robots' roads, drafts cards, walks the hero to the fight and fires powers. For each land it plays real battles, scores every night from 0 (nothing lost) to 1 (the Castle fell), and nudges each night's wave budget toward a difficulty curve I set: gentle at first, a bump on boss nights, a hard final night.</p>
+<p>Two more tools work the same way. One plays identical battles with each of the 6 heroes and compares how hard the nights were. Another puts every tower on a shooting range and measures damage per resource spent, then tunes the numbers toward a common target.</p>
+<p>The battle GIFs in this post were recorded while the autoplayer was playing.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/night-boss-attack.gif" alt="At night, the Arachno-Mech boss pounces on a tower at the castle gate."></p>
+<p>It also found a bug I'd never have found by hand: the robots' pathfinding stored distances at low precision, so damaged walls could make it recheck the same hexes thousands of times and freeze big battles for seconds.</p>
+
+<h2>6. Where I had to step in</h2>
+
+<p>This is the part I think matters most. When building something takes hours instead of weeks, the bottleneck moves to judgement.</p>
+<ul>
+<li><strong>The AI player isn't a player.</strong> The autoplayer really loves Archer Towers. It plays sensibly but not expertly, so its curve is a baseline, not the truth. The first lands were trimmed by hand so the tutorial land stays the gentlest.</li>
+<li><strong>The tools find outliers; they don't decide.</strong> The hero tool showed Mystic Mittens' Meteor doing most of the damage in town. Cutting it was obvious. Deciding what each hero should <em>feel</em> like afterwards wasn't something a number could tell me.</li>
+<li><strong>Cheap content means too much content.</strong> The campaign launched with 36 lands. Playing them, half felt like copies, so I cut it to 18 and made every land a unique combination of layout (open, maze, canyon, crescent, islands) and portal count. I also removed upgrades that only repeated another one, so every upgrade now does something different.</li>
+<li><strong>Voice and consistency.</strong> A design review pass turned generic "bots" into household gadgets with personalities (the Robo-Poodle, the Toaster Bomb, the Steam Iron, the Whistling Kettle that hovers over your best tower before dropping on it) and fixed the words everywhere: always "the Grime", always "night", never "wave".</li>
+<li><strong>The first 30 seconds.</strong> Telemetry showed players skipping the welcome page. So the tutorial was rebuilt with no pages at all: day 1 starts with a step that is only walking, then a Logging Camp, a Farm and an Archer Tower on glowing hexes, with tonight's robot path drawn on the map. Every lesson is something you do.</li>
+</ul>
+
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/castle-fallen-rewind.png" alt="The Castle has fallen screen, offering to rewind to that morning for Gears or accept defeat."></p>
+
+<h2>7. Meta-progression</h2>
+<p>Gears are the only currency you take home. You spend them in the Town, a walled cat town where locked buildings stand in greyscale and come to life as you unlock them. Each building holds its own unlocks: new cards, upgrade finishers, and charters that make a building available from the first morning of every battle.</p>
+<p><img src="https://portfolio.geisert.me/devlogs/kitty-kingdom/img/town-meta-progression.gif" alt="The Town, with unlocked buildings in colour and animated, and locked ones in greyscale."></p>
+
+<h2>8. What I learned</h2>
+<ul>
+<li><strong>Constraints are design tools even after you drop them.</strong> Movement Input Only is gone, but the mechanic it forced is still the game.</li>
+<li><strong>Ask for options, not answers.</strong> Side-by-side option sheets made art direction fast, and made it easy to explain why I picked one.</li>
+<li><strong>Use AI players to find the shape, and humans to find the fun.</strong> The autoplayer gets the difficulty curve roughly right. Real players tell you whether it's enjoyable.</li>
+</ul>
+
+<h2>What's next</h2>
+<p>The early lands are tuned. The long eastern lands still need tuning against real players rather than the autoplayer, and that's where you come in. If you play, I'd love to know:</p>
+<ul>
+<li>Which lands felt too hard or too easy?</li>
+<li>Which cards always end up in your deck, and which never do?</li>
+<li>Where in the first battle did you get confused, if anywhere?</li>
+</ul>
+
+<p>Thanks to everyone from Jamference #1 who played the first version. The jam runs every two weeks and anyone can join: <a href="https://jamference.com">jamference.com</a>.</p>
+
+<p>David</p>
+
+<p><a href="https://portfolio.geisert.me/project.html?p=kitty-kingdom">Case study on my portfolio</a> · <a href="https://dgeisert.itch.io/kitty-kingdom">Original jam entry</a> · <a href="https://itch.io/jam/jamference-ai-game-jam-hack-1">Jamference #1 results</a></p>
